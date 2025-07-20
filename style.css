@@ -1,0 +1,231 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f0f8f4 0%, #e8f5ee 50%, #f5f5f5 100%);
+  background-image: 
+        linear-gradient(rgba(0, 152, 70, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 152, 70, 0.1) 1px, transparent 1px),
+        linear-gradient(rgba(0, 152, 70, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 152, 70, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px, 40px 40px, 8px 8px, 8px 8px;
+      background-position: 0 50vh, 0 50vh, 0 50vh, 0 50vh;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+.container {
+  max-width: 500px;
+}
+
+.logo {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #009846;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+a {
+  color: #009846;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.bean {
+  width: 600px;
+  position: absolute;
+  left: -300px;
+  z-index: -1;
+  animation: bean 10s linear infinite;
+}
+
+@keyframes bean {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f0f8f4 0%, #e8f5ee 50%, #f5f5f5 100%);
+  background-image:
+        linear-gradient(rgba(0, 152, 70, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 152, 70, 0.1) 1px, transparent 1px),
+        linear-gradient(rgba(0, 152, 70, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 152, 70, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px, 8px 8px, 8px 8px;
+  background-position: 0 50vh, 0 50vh, 0 50vh, 0 50vh;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 500px;
+  position: relative;
+  z-index: 2;
+}
+
+.logo {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #009846;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+a {
+  color: #009846;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.bean {
+  width: 600px;
+  position: absolute;
+  left: -300px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+  animation: bean 10s linear infinite;
+}
+
+@keyframes bean {
+  from {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 1024px) {
+    .bean {
+        width: 500px;
+        left: -250px;
+    }
+}
+
+@media (max-width: 900px) {
+    .bean {
+        width: 400px;
+        left: -200px;
+    }
+}
+
+@media (max-width: 768px) {
+  body {
+    background-size: 20px 20px, 20px 20px, 4px 4px, 4px 4px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+  
+  .bean {
+    width: 450px;
+    left: 50%;
+    top: auto;
+    bottom: -225px;
+    transform: translateX(-50%);
+  }
+  
+  @keyframes bean {
+    from {
+      transform: translateX(-50%) rotate(0deg);
+    }
+    to {
+      transform: translateX(-50%) rotate(360deg);
+    }
+  }
+}
+
+@media (max-width: 600px) {
+    .bean {
+    width: 350px;
+    bottom: -175px;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    max-width: 90%;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .bean {
+    width: 250px;
+    bottom: -125px;
+  }
+}
+
+@media (max-width: 320px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  p {
+    font-size: 0.9rem;
+  }
+  
+  .bean {
+    width: 150px;
+    bottom: -75px;
+  }
+}
