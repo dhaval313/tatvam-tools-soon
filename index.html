@@ -1,17 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tatvam - Coming Soon</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Tatvam Tools - Premium Metal Coolant Pipes for CNC, VMC, Lathe, Milling & Shaping Machines. Accura brand flexible coolant pipes with superior quality.">
+    <meta name="keywords"
+        content="coolant pipes, metal coolant pipes, coolant pipes, CNC coolant pipes, VMC coolant pipes, flexible coolant pipes, Accura, Tatvam Tools">
+    <title>Tatvam Tools | Premium Metal Coolant Pipes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="Images/tatvamToolsLogo.png">
 </head>
+
 <body>
-    <img src="images/polygon2.svg" class="bean" alt="" />
-  <div class="container">
-    <img src="images/tatvam.png" alt="Tatvam Logo" class="logo" />
-    <h1>Coming Soon</h1>
-    <p>Contact us: <a href="mailto:contact@tatvam.com">sales@tatvamtools.com</a></p>
-  </div>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="Images/tatvamToolsLogo.png" alt="Tatvam Tools Logo">
+                <span class="logo-text">Tatvam Tools</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About Us</a></li>
+                <li><a href="#products" class="nav-link">Products</a></li>
+                <li><a href="#specifications" class="nav-link">Specifications</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="contact.html" class="cta-button">Get Quote</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="hero-gradient"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-icon">★</span>
+                <span>Premium Quality Since Excellence</span>
+            </div>
+            <h1 class="hero-title">
+                Premium <span class="highlight">Metal Coolant</span> Pipes
+            </h1>
+            <p class="hero-subtitle">
+                Industry-leading  steel flexible coolant pipes designed for CNC, VMC, Lathe, Milling & Shaping
+                machines. Built to withstand extreme conditions with unmatched durability.
+            </p>
+            <div class="hero-cta">
+                <a href="#products" class="btn-primary">
+                    <span>Explore Products</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <a href="contact.html" class="btn-secondary">
+                    <span>Contact Us</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Bar Pressure</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">90°</span>
+                    <span class="stat-label">Working Temp</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">Metal</span>
+                    <span class="stat-label">Grade Material</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="image-glow"></div>
+            <img src="Images/WhatsApp Image 2026-01-05 at 10.49.37 AM (1).jpeg" alt="Premium Metal Coolant Pipe">
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Why Choose Us</span>
+                <h2 class="section-title">Built for <span class="highlight">Industrial Excellence</span></h2>
+                <p class="section-subtitle">Our coolant pipes are engineered to meet the demanding requirements of
+                    modern machining operations</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                    <h3>Superior Durability</h3>
+                    <p> steel construction ensures long-lasting performance even in harsh industrial
+                        environments</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v6l4 2" />
+                        </svg>
+                    </div>
+                    <h3>High Performance</h3>
+                    <p>Withstands up to 50 bar pressure and 90°C working temperature for demanding applications</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                    </div>
+                    <h3>Flexible Design</h3>
+                    <p>Highly flexible construction allows easy positioning and adjustment for optimal coolant flow</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                            <polyline points="22 4 12 14.01 9 11.01" />
+                        </svg>
+                    </div>
+                    <h3>Quality Assured</h3>
+                    <p>Accura brand certified products with night writing coating for premium quality assurance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Product</span>
+                <h2 class="section-title">Premium <span class="highlight">Metal Coolant Pipe</span></h2>
+                <p class="section-subtitle">High-quality  steel flexible coolant pipe for CNC, VMC, Lathe,
+                    Milling & Shaping machines</p>
+            </div>
+            <div class="product-showcase">
+                <div class="product-gallery">
+                    <div class="gallery-main">
+                        <img src="Images/WhatsApp Image 2026-01-05 at 10.49.37 AM (1).jpeg" alt="Metal Coolant Pipe"
+                            id="mainImage">
+                        <div class="product-badge">Best Seller</div>
+                    </div>
+                    <div class="gallery-thumbs">
+                        <img src="Images/WhatsApp Image 2026-01-05 at 10.49.37 AM (1).jpeg"
+                            alt="Metal Coolant Pipe View 1" class="thumb active" onclick="changeImage(this)">
+                        <img src="Images/WhatsApp Image 2026-01-05 at 10.49.38 AM.jpeg" alt="Metal Coolant Pipe View 2"
+                            class="thumb" onclick="changeImage(this)">
+                        <img src="Images/WhatsApp Image 2026-01-05 at 10.49.39 AM.jpeg" alt="Metal Coolant Pipe View 3"
+                            class="thumb" onclick="changeImage(this)">
+                        <img src="Images/WhatsApp Image 2026-01-05 at 10.49.38 AM (1).jpeg"
+                            alt="Metal Coolant Pipe View 4" class="thumb" onclick="changeImage(this)">
+                    </div>
+                </div>
+                <div class="product-details">
+                    <h3>Flexible Metal Coolant Pipe</h3>
+                    <p class="product-description">Premium quality  steel flexible coolant pipe designed for
+                        industrial machinery. Features night writing coating with Drake Grey finish for superior
+                        durability and corrosion resistance.</p>
+                    <div class="product-features">
+                        <div class="feature-item">
+                            <span class="feature-label">Material</span>
+                            <span class="feature-value"> Steel</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-label">Brand</span>
+                            <span class="feature-value">Accura</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-label">Thread Sizes</span>
+                            <span class="feature-value">1/4", 3/8", 1/2"</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-label">Max Pressure</span>
+                            <span class="feature-value">50 Bar</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-label">Working Temp</span>
+                            <span class="feature-value">90°C</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-label">Tubing OD</span>
+                            <span class="feature-value">20.5mm</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <a href="contact.html" class="btn-primary">
+                            <span>Request Quote</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                        <a href="tel:9924361415" class="btn-secondary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                            <span>Call Now</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specifications Section -->
+    <section class="specifications" id="specifications">
+        <div class="container">
+            <div class="specs-wrapper">
+                <div class="specs-content">
+                    <span class="section-tag">Technical Details</span>
+                    <h2 class="section-title">Product <span class="highlight">Specifications</span></h2>
+                    <p class="section-subtitle">Our coolant pipes are manufactured to meet the highest industry
+                        standards</p>
+
+                    <div class="specs-table">
+                        <div class="spec-row">
+                            <span class="spec-label">Material</span>
+                            <span class="spec-value"> Steel </span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Brand</span>
+                            <span class="spec-value">Tatvam Tools</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Color</span>
+                            <span class="spec-value">Drake Grey</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Thread Sizes</span>
+                            <span class="spec-value">1/4", 3/8", 1/2"</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Max Operating Pressure</span>
+                            <span class="spec-value">100 Bar</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Working Temperature</span>
+                            <span class="spec-value">-30°C to +60°C</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Tubing OD</span>
+                            <span class="spec-value">20.5mm</span>
+                        </div>
+                        <!-- <div class="spec-row">
+                            <span class="spec-label">Coating</span>
+                            <span class="spec-value">Night Writing</span>
+                        </div> -->
+                        <div class="spec-row">
+                            <span class="spec-label">Flexibility</span>
+                            <span class="spec-value">Flexible</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Packaging</span>
+                            <span class="spec-value">Plastic Box Packing</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="specs-image">
+                    <img src="Images/WhatsApp Image 2026-01-05 at 10.49.38 AM (1).jpeg"
+                        alt="Coolant Pipe Specifications">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section class="applications">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Applications</span>
+                <h2 class="section-title">Industrial <span class="highlight">Applications</span></h2>
+                <p class="section-subtitle">Our coolant pipes are designed for a wide range of industrial machinery</p>
+            </div>
+            <div class="applications-grid">
+                <div class="application-item">
+                    <div class="application-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="6" width="20" height="12" rx="2" />
+                            <circle cx="12" cy="12" r="2" />
+                        </svg>
+                    </div>
+                    <span>CNC Machines</span>
+                </div>
+                <div class="application-item">
+                    <div class="application-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </div>
+                    <span>VMC Machines</span>
+                </div>
+                <div class="application-item">
+                    <div class="application-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                        </svg>
+                    </div>
+                    <span>Lathe Machines</span>
+                </div>
+                <div class="application-item">
+                    <div class="application-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                            <path d="M2 17l10 5 10-5" />
+                            <path d="M2 12l10 5 10-5" />
+                        </svg>
+                    </div>
+                    <span>Milling Machines</span>
+                </div>
+                <div class="application-item">
+                    <div class="application-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                            <polyline points="2 17 12 22 22 17" />
+                            <polyline points="2 12 12 17 22 12" />
+                        </svg>
+                    </div>
+                    <span>Shaping Machines</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Upgrade Your Machine Coolant System?</h2>
+                <p>Get in touch with us today for competitive pricing and bulk orders</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn-primary">
+                        <span>Get a Quote</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                    <a href="tel:9924361415" class="btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg>
+                        <span>Call Now</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="Images/tatvamToolsLogo.png" alt="Tatvam Tools Logo">
+                        <span class="logo-text">Tatvam Tools</span>
+                    </a>
+                    <p>Your trusted partner for premium quality metal coolant pipes and industrial components. Quality,
+                        durability, and excellence in every product.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#specifications">Specifications</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#products">Metal Coolant Pipe</a></li>
+                        <li><a href="#specifications">Specifications</a></li>
+                        <li><a href="#about">Features</a></li>
+                        <li><a href="contact.html">Get Quote</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            <a href="mailto:sales@tatvamtools.com">sales@tatvamtools.com</a>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                            <a href="tel:9924361415">+91 9924361415</a>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            <span>Ground Floor, Shop No 9, Ram-shaym Appartment, Opp D-mart, Rajkot - 360004, Gujarat,
+                                India</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Tatvam Tools. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://wa.me/919924361415" target="_blank" aria-label="WhatsApp"
+                        class="social-link whatsapp">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
