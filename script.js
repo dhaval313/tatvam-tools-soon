@@ -1,5 +1,89 @@
 // Tatvam Tools - Main JavaScript
 
+// Load navbar and footer components
+async function loadComponents() {
+    // Load navbar
+    const navbarPlaceholder = document.getElementById('navbar-placeholder');
+    if (navbarPlaceholder) {
+        try {
+            const response = await fetch('components/navbar.html');
+            if (response.ok) {
+                const html = await response.text();
+                navbarPlaceholder.innerHTML = html;
+                initNavbar();
+            }
+        } catch (e) {
+            console.log('Navbar component not found, using inline navbar');
+        }
+    }
+
+    // Load footer
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+    if (footerPlaceholder) {
+        try {
+            const response = await fetch('components/footer.html');
+            if (response.ok) {
+                const html = await response.text();
+                footerPlaceholder.innerHTML = html;
+            }
+        } catch (e) {
+            console.log('Footer component not found, using inline footer');
+        }
+    }
+}
+
+// Initialize navbar functionality
+function initNavbar() {
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function () {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    }
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
+            if (navLinks) navLinks.classList.remove('active');
+        });
+    });
+
+    // Set active nav link based on current page
+    setActiveNavLink();
+}
+
+// Set the active navigation link based on current URL
+function setActiveNavLink() {
+    const pathname = window.location.pathname;
+    const currentPage = pathname.split('/').pop() || 'index.html';
+    // Remove .html extension for comparison
+    const pageWithoutExt = currentPage.replace('.html', '');
+    const navLinksItems = document.querySelectorAll('.nav-link');
+
+    navLinksItems.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+        const hrefWithoutExt = href.replace('.html', '');
+
+        // Match if: exact match, or root path matches index, or names match without extension
+        if (href === currentPage ||
+            hrefWithoutExt === pageWithoutExt ||
+            (currentPage === '' && href === 'index.html') ||
+            (pageWithoutExt === '' && hrefWithoutExt === 'index') ||
+            (pathname === '/' && href === 'index.html')) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Load components first, then initialize
+loadComponents();
+
 document.addEventListener('DOMContentLoaded', function () {
     // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -92,20 +176,41 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Check if on contact page - highlight Contact link
-    const isContactPage = window.location.pathname.includes('contact.html') ||
-        window.location.href.includes('contact.html');
+    // Get current page name for detection (handle both .html and non-.html URLs)
+    const pathname = window.location.pathname;
+    const currentPageName = pathname.split('/').pop().replace('.html', '') || 'index';
+
+    // Check if on specific pages
+    const isContactPage = currentPageName === 'contact';
+    const isAboutPage = currentPageName === 'about';
+    const isProductsPage = currentPageName === 'products';
+    const isHomePage = currentPageName === 'index' || currentPageName === '' || pathname === '/';
 
     if (isContactPage) {
         // On contact page - always highlight Contact link
         navLinksForSpy.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href') === 'contact.html' ||
-                link.getAttribute('href').includes('contact.html')) {
+            if (link.getAttribute('href').includes('contact')) {
                 link.classList.add('active');
             }
         });
-    } else {
+    } else if (isAboutPage) {
+        // On about page - always highlight About Us link
+        navLinksForSpy.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes('about')) {
+                link.classList.add('active');
+            }
+        });
+    } else if (isProductsPage) {
+        // On products page - always highlight Products link
+        navLinksForSpy.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes('products')) {
+                link.classList.add('active');
+            }
+        });
+    } else if (isHomePage) {
         // On main page - run scroll spy
         window.addEventListener('scroll', scrollSpy);
         scrollSpy(); // Initial call
