@@ -1,12 +1,25 @@
 // Tatvam Tools - Main JavaScript
 
+// Get the base path for loading components (works from any page)
+function getBasePath() {
+    const scripts = document.getElementsByTagName('script');
+    for (let script of scripts) {
+        if (script.src.includes('assets/js/script.js')) {
+            return script.src.replace('assets/js/script.js', '');
+        }
+    }
+    return '';
+}
+
+const BASE_PATH = getBasePath();
+
 // Load navbar and footer components
 async function loadComponents() {
     // Load navbar
     const navbarPlaceholder = document.getElementById('navbar-placeholder');
     if (navbarPlaceholder) {
         try {
-            const response = await fetch('components/navbar.html');
+            const response = await fetch(BASE_PATH + 'components/navbar.html');
             if (response.ok) {
                 const html = await response.text();
                 navbarPlaceholder.innerHTML = html;
@@ -21,7 +34,7 @@ async function loadComponents() {
     const footerPlaceholder = document.getElementById('footer-placeholder');
     if (footerPlaceholder) {
         try {
-            const response = await fetch('components/footer.html');
+            const response = await fetch(BASE_PATH + 'components/footer.html');
             if (response.ok) {
                 const html = await response.text();
                 footerPlaceholder.innerHTML = html;
@@ -273,19 +286,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            // Simulate form submission
+            // Show loading state
             const submitBtn = this.querySelector('.submit-btn');
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<span>Sending...</span>';
             submitBtn.disabled = true;
 
-            // Simulate API call
+            // Log form data to console
+            console.log('Contact Form Submission:', data);
+
+            // Show success message after short delay
             setTimeout(() => {
-                showNotification('Thank you! Your message has been sent successfully. We will get back to you soon.', 'success');
+                showNotification('Thank you! Your message has been received. We will get back to you soon.', 'success');
                 contactForm.reset();
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-            }, 1500);
+            }, 1000);
         });
     }
 
@@ -481,12 +497,22 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Product gallery image change function
-function changeImage(thumb) {
-    const mainImage = document.getElementById('mainImage');
+// Supports both single gallery (mainImage) and multiple galleries (mainImageId parameter)
+function changeImage(thumb, mainImageId) {
+    // If mainImageId is provided, use it; otherwise default to 'mainImage'
+    const imageId = mainImageId || 'mainImage';
+    const mainImage = document.getElementById(imageId);
+
     if (mainImage && thumb) {
         mainImage.src = thumb.src;
-        // Update active state
-        document.querySelectorAll('.gallery-thumbs .thumb').forEach(t => t.classList.remove('active'));
+        // Update active state within the same gallery only
+        const gallery = thumb.closest('.gallery-thumbs');
+        if (gallery) {
+            gallery.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+        } else {
+            // Fallback for older structure
+            document.querySelectorAll('.gallery-thumbs .thumb').forEach(t => t.classList.remove('active'));
+        }
         thumb.classList.add('active');
     }
 }
