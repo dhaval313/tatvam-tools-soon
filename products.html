@@ -10,494 +10,575 @@
         content="coolant pipes, steel coolant pipes, plastic coolant pipes, PU coolant pipes, flexible coolant pipes, CNC coolant pipes, magnetic base coolant holder, magnetic hose holder, Tatvam Tools">
     <title>Products | Tatvam Tools - Flexible Coolant Pipes</title>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/products.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/images/logos/logo.png">
 </head>
 
-<body>
-    <!-- Navigation - Loaded from component -->
-    <div id="navbar-placeholder"></div>
+<body></body>
+<!-- Navigation - Loaded from component -->
+<div id="navbar-placeholder"></div>
 
-    <!-- Products Hero -->
-    <section class="products-hero" id="products-top">
-        <div class="products-hero-background"></div>
-        <div class="container">
-            <div class="products-hero-content">
-                <span class="hero-badge">Premium Industrial Solutions</span>
-                <h1>Our <span class="highlight">Products</span></h1>
-                <p class="hero-subtitle">Industry-leading flexible coolant pipes engineered for precision machining
-                    applications. Manufactured in-house with rigorous quality control for CNC, VMC, Lathe, Milling,
-                    Grinding & EDM machines.</p>
-                <div class="hero-features">
-                    <div class="hero-feature-item">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        </svg>
-                        <span>50+ Bar Pressure</span>
-                    </div>
-                    <div class="hero-feature-item">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M12 6v6l4 2" />
-                        </svg>
-                        <span>90°C Working Temp</span>
-                    </div>
-                    <div class="hero-feature-item">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                            <polyline points="22 4 12 14.01 9 11.01" />
-                        </svg>
-                        <span>Leak-Proof Design</span>
-                    </div>
-                </div>
+<!-- Products Catalog Section -->
+<section class="products-catalog" id="catalog" style="padding-top: 120px;">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Our Range</span>
+            <h2 class="section-title">Explore Our <span class="highlight">Product Catalog</span></h2>
+            <p class="section-subtitle">Click on any product to view detailed specifications and information</p>
+        </div>
+        <div class="products-grid" id="productsGrid">
+            <!-- Product cards will be dynamically generated -->
+        </div>
+    </div>
+</section>
+
+<!-- Product Detail Section (Hidden by default, shown when product is clicked) -->
+<section class="product-detail-section" id="productDetail" style="display: none;">
+    <div class="container">
+        <!-- Back Button -->
+        <button class="back-to-products" onclick="showCatalog()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            <span>Back to Products</span>
+        </button>
+
+        <!-- Product Content (will be injected dynamically) -->
+        <div id="productDetailContent">
+            <!-- Content injected here -->
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section" id="cta">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Need a Custom Solution?</h2>
+            <p>Contact us for custom lengths, bulk orders, or specific requirements</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn-primary">
+                    <span>Get Quote</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <a href="tel:9924361415" class="btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    <span>Call Now</span>
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Product 1: Steel Flexible Coolant Pipe -->
-    <section class="product-section" id="alloy-steel">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Product 1</span>
-                <h2 class="section-title">Steel <span class="highlight">Flexible Coolant Pipe</span></h2>
-                <p class="section-subtitle">Precision-engineered coolant delivery systems manufactured to exacting
-                    standards for optimal machining performance
-                </p>
-            </div>
-            <div class="product-showcase">
-                <div class="product-gallery">
-                    <div class="gallery-main">
-                        <img src="assets/images/products/metal-coolant-pipe/metal-coolant-pipe(cover).jpg"
-                            alt="Steel Coolant Pipe - Cover View" id="mainImage1">
-                        <div class="product-badge">Best Seller</div>
+<!-- Footer - Loaded from component -->
+<div id="footer-placeholder"></div>
+
+<!-- Image Lightbox -->
+<div class="lightbox-overlay" id="lightbox">
+    <div class="lightbox-content">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img id="lightbox-image" src="" alt="Full size image">
+        <video id="lightbox-video" src="" controls style="display:none;"></video>
+    </div>
+</div>
+
+<script>
+    // ========== PRODUCT DATA ==========
+    const products = [
+        {
+            id: 'metal-coolant-pipe',
+            name: 'Steel Flexible Coolant Pipe',
+            shortDesc: 'Precision-engineered steel coolant pipes for industrial applications',
+            badge: 'Best Seller',
+            folder: 'metal-coolant-pipe',
+            coverImage: 'metal-coolant-pipe(cover).jpg',
+            images: [
+                { src: 'metal-coolant-pipe(cover).jpg', alt: 'Steel Coolant Pipe - Cover View' },
+                { src: 'metal-coolant-pipe(curved).jpg', alt: 'Steel Coolant Pipe - Curved View' },
+                { src: 'metal-Coolant-Pipe(round).jpeg', alt: 'Steel Coolant Pipe - Round View' },
+                { src: 'metal-Coolant-Pipe(front-angled-left).jpeg', alt: 'Steel Coolant Pipe - Front Angled Left' },
+                { src: 'Metal-Coolant-Pipe(front-angled-right).jpeg', alt: 'Steel Coolant Pipe - Front Angled Right' },
+                { src: 'metal-Coolant-pipe(back-angled).jpg', alt: 'Steel Coolant Pipe - Back Angled' },
+                { src: '1000144839.jpg', alt: 'Steel Coolant Pipe - View 7' }
+            ],
+            specs: [
+                { label: 'Material', value: 'Steel' },
+                { label: 'Brand', value: 'Tatvam' },
+                { label: 'Thread Sizes', value: '¼", ⅜", ½" BSP' },
+                { label: 'Length', value: 'Starting 2" up to required' },
+                { label: 'Key Feature', value: 'Adjustable & Leak-proof' },
+                { label: 'Parts Available', value: 'Separately Purchasable' }
+            ],
+            description: 'Engineered for industrial excellence, our Steel Flexible Coolant Pipes represent the pinnacle of precision coolant delivery technology. Manufactured in-house under stringent quality control protocols, these pipes feature premium-grade steel construction rated for 50+ bar operating pressure and 90°C maximum working temperature. The innovative flexible segment design ensures zero-leak performance while enabling precise directional coolant flow optimization. Modular architecture allows individual procurement of Part Elements, Threaded Adapters (BSP standard), and specialized Nozzles for complete system customization. Trusted by manufacturing facilities nationwide, our coolant pipes deliver exceptional performance across CNC machining centers, VMC units, conventional Lathes, Milling machines, Surface Grinders, Drilling equipment, Boring machines, EDM systems, and Shaping operations. Backed by Tatvam Tools\' commitment to quality and comprehensive after-sales support.'
+        },
+        {
+            id: 'magnet',
+            name: 'Magnetic Base Coolant Hose Holder',
+            shortDesc: 'Powerful magnetic base with flexible coolant nozzles',
+            badge: 'New Arrival',
+            folder: 'magnet',
+            coverImage: 'magnet-front.jpg',
+            images: [
+                { src: 'magnet-front.jpg', alt: 'Magnetic Base - Front View' },
+                { src: 'magnet-back.jpg', alt: 'Magnetic Base - Back View' },
+                { src: 'magnet-Bottom.jpg', alt: 'Magnetic Base - Bottom View' }
+            ],
+            video: 'Magnet-round-view(video).mp4',
+            specs: [
+                { label: 'Magnetic Pull', value: '100 lbs' },
+                { label: 'Brand', value: 'Tatvam' },
+                { label: 'Base Type', value: 'On-Off Magnetic Base' },
+                { label: 'Nozzle Count', value: '2 Flexible Nozzles' },
+                { label: 'Nozzle Size', value: '¼" BSP' },
+                { label: 'Key Feature', value: 'Strong Holding Power' }
+            ],
+            description: 'The Coolant Flexible Magnetic Base Hoses Holder is designed for maximum versatility and convenience in industrial machining applications. Featuring a powerful 100 lbs magnetic pull, it quickly attaches to any metallic surface with exceptional holding power. The innovative on-off magnetic base allows for easy repositioning without scratching your workpiece or machine surface. Equipped with 2 flexible coolant nozzles measuring ¼" BSP, these hoses stay put in any position, directing coolant exactly where needed. Perfect for CNC machines, lathes, milling machines, grinders, and other metalworking equipment. The magnetic base design eliminates the need for additional mounting hardware, making it ideal for temporary setups or frequently changing production requirements.'
+        },
+        {
+            id: 'coolant-pipe',
+            name: 'Plastic Flexible Coolant Pipe',
+            shortDesc: 'High-quality PP coolant pipes for versatile applications',
+            badge: 'Popular',
+            folder: 'Coolant-Pipe',
+            coverImage: 'AQ-121908413-1-2-inch-y-coolant-pipe.jpeg',
+            images: [
+                { src: 'AQ-121908413-1-2-inch-y-coolant-pipe.jpeg', alt: 'Plastic Coolant Pipe - Y Type' },
+                { src: 'MU-121908413-plastic-flexible-coolant-pipe-thared-size-1-4-x18.jpeg', alt: 'Plastic Coolant Pipe - Threaded' },
+                { src: '1000171470 (1).jpg', alt: 'Plastic Coolant Pipe - View 3' },
+                { src: '1000171490 (1).jpg', alt: 'Plastic Coolant Pipe - View 4' },
+                { src: '20240531_154034.jpg', alt: 'Plastic Coolant Pipe - View 5' },
+                { src: '20241231_151144.jpg', alt: 'Plastic Coolant Pipe - View 6' },
+                { src: '20250428_162108 (1).jpg', alt: 'Plastic Coolant Pipe - View 7' }
+            ],
+            specs: [
+                { label: 'Material', value: 'PP (Polypropylene)' },
+                { label: 'Brand', value: 'Tatvam' },
+                { label: 'Thread Sizes', value: '⅛", ¼", ⅜", ½", ¾" BSP' },
+                { label: 'Thread Type', value: 'B.S.P. Thread & I.D.' },
+                { label: 'Nozzle Options', value: 'Round / Flat' },
+                { label: 'Key Feature', value: 'Adjustable & Leak-proof' },
+                { label: 'Custom Length', value: 'Available on Request' }
+            ],
+            description: 'Adjustable, leak-proof pipes and fittings ensure precise coolant flow for machining and industrial applications. Made from high-quality PP (Polypropylene) material, offering excellent chemical resistance, flexibility and durability. Our plastic coolant pipes are designed for applications requiring lightweight construction with superior corrosion resistance. Available in multiple thread sizes and lengths, these pipes maintain their shape while allowing easy directional adjustments. Ideal for light-duty machining operations, laboratory equipment, and environments where chemical resistance is critical.'
+        },
+        {
+            id: 'circular-flow',
+            name: 'Circular Flow Coolant Pipe',
+            shortDesc: 'Specialized circular nozzle for 360° coolant distribution',
+            badge: 'Premium',
+            folder: 'Circular-Flow-Coolant-Pipe',
+            coverImage: 'Circular-Flow-Nozzle-Coolant-Pipe.jpg',
+            images: [
+                { src: 'Circular-Flow-Nozzle-Coolant-Pipe.jpg', alt: 'Circular Flow Nozzle Coolant Pipe' },
+                { src: '1000280680.jpg', alt: 'Circular Flow Coolant Pipe - View 1' },
+                { src: '1000280682.jpg', alt: 'Circular Flow Coolant Pipe - View 2' },
+                { src: '1000280683 (1).jpg', alt: 'Circular Flow Coolant Pipe - View 3' },
+                { src: '1000280684.jpg', alt: 'Circular Flow Coolant Pipe - View 4' },
+                { src: '1000280717.jpg', alt: 'Circular Flow Coolant Pipe - View 5' },
+                { src: '1000280718.jpg', alt: 'Circular Flow Coolant Pipe - View 6' },
+                { src: '1000280719.jpg', alt: 'Circular Flow Coolant Pipe - View 7' },
+                { src: '20250320_112649.jpg', alt: 'Circular Flow Coolant Pipe - View 8' }
+            ],
+            specs: [
+                { label: 'Material', value: 'Industrial Grade' },
+                { label: 'Thread Sizes', value: '¼", ½" BSP' },
+                { label: 'Flow Type', value: '360° Circular' },
+                { label: 'Application', value: 'CNC & VMC Machines' },
+                { label: 'Key Feature', value: 'Uniform Coolant Distribution' },
+                { label: 'Custom Sizes', value: 'Available' }
+            ],
+            description: 'Introducing our premium Circular Flow Coolant Pipe, engineered to deliver unparalleled 360-degree coolant distribution for precision machining applications. This innovative nozzle design ensures uniform coolant coverage around the entire cutting zone, significantly improving tool life and surface finish quality. Ideal for high-speed CNC machining centers, VMC operations, and applications where conventional directional nozzles fall short. The circular flow pattern eliminates hot spots, reduces thermal shock, and maintains consistent chip evacuation during demanding machining operations. Manufactured with industrial-grade materials for exceptional durability and corrosion resistance. Available in multiple sizes to accommodate various spindle configurations and flow requirements. Trusted by precision manufacturing facilities for operations requiring superior thermal management and extended tool longevity.'
+        },
+        {
+            id: 'mist-coolant',
+            name: 'Mist Coolant System',
+            shortDesc: 'Advanced mist coolant delivery for precision cooling',
+            badge: 'Advanced',
+            folder: 'Mist-Coolant',
+            coverImage: '20250618_181305.jpg',
+            images: [
+                { src: '20250618_181305.jpg', alt: 'Mist Coolant System - View 1' },
+                { src: '20250618_181850.jpg', alt: 'Mist Coolant System - View 2' },
+                { src: '20250618_181859 (1).jpg', alt: 'Mist Coolant System - View 3' },
+                { src: '20250618_181927 (1).jpg', alt: 'Mist Coolant System - View 4' },
+                { src: '20250618_182141 (1).jpg', alt: 'Mist Coolant System - View 5' },
+                { src: '20250619_111932 (1).jpg', alt: 'Mist Coolant System - View 6' },
+                { src: '20250619_112439.jpg', alt: 'Mist Coolant System - View 7' }
+            ],
+            specs: [
+                { label: 'Type', value: 'Mist Spray System' },
+                { label: 'Brand', value: 'Tatvam' },
+                { label: 'PU Pipe Size', value: '8mm Outer Diameter' },
+                { label: 'Coolant Type', value: 'Air + Coolant Mix' },
+                { label: 'Application', value: 'High-Speed Machining' },
+                { label: 'Key Feature', value: 'Minimal Coolant Usage' },
+                { label: 'Adjustable', value: 'Flow Rate Control' }
+            ],
+            description: 'Experience the next generation of coolant delivery with our advanced Mist Coolant System. This state-of-the-art system atomizes coolant into a fine mist, combining air and coolant to create an optimal cooling environment for high-speed machining operations. The mist coolant technology dramatically reduces coolant consumption by up to 90% compared to traditional flood cooling methods, while providing superior cooling efficiency at the cutting edge. Features precision-adjustable flow rate control for customizing coolant delivery based on specific machining requirements. The system is particularly effective for aluminum machining, dry machining applications, and operations where minimal coolant usage is preferred. Includes industrial-grade components for reliable performance in demanding production environments. Easy installation and low maintenance make it an ideal upgrade for modern manufacturing facilities seeking to optimize coolant usage and improve machining efficiency.'
+        },
+        {
+            id: 'elements',
+            name: 'Coolant Pipe Elements',
+            shortDesc: 'Individual flexible pipe segments for custom assemblies',
+            badge: 'Essential',
+            folder: 'Elements',
+            coverImage: '1000103933-01 (1).jpeg',
+            images: [
+                { src: '1000103933-01 (1).jpeg', alt: 'Coolant Pipe Elements - View 1' },
+                { src: '1000103940-02 (1).jpeg', alt: 'Coolant Pipe Elements - View 2' },
+                { src: '1000103942-01 (1).jpeg', alt: 'Coolant Pipe Elements - View 3' },
+                { src: '1000103944-02 (1).jpeg', alt: 'Coolant Pipe Elements - View 4' }
+            ],
+            specs: [
+                { label: 'Type', value: 'Flexible Elements' },
+                { label: 'Brand', value: 'Tatvam' },
+                { label: 'Thread Sizes', value: '¼", ⅜", ½" BSP' },
+                { label: 'Material', value: 'High-Quality Polymer' },
+                { label: 'Compatibility', value: 'Universal Fit' },
+                { label: 'Key Feature', value: 'Modular Assembly' },
+                { label: 'Quantity', value: 'Bulk Available' }
+            ],
+            description: 'Our Coolant Pipe Elements are the fundamental building blocks for creating custom coolant delivery systems tailored to your specific machining requirements. Each element is precision-manufactured from high-quality polymer material that offers excellent chemical resistance, flexibility, and long-term durability. The modular design allows you to create coolant pipes of any length by simply connecting multiple elements together, providing unlimited flexibility for unique machine configurations. Universal compatibility ensures seamless integration with both our steel and plastic coolant pipe systems. Available in various segment sizes to accommodate different flow requirements and installation spaces. Sold individually or in bulk quantities for cost-effective inventory management. These essential components are the perfect solution for replacement parts, custom assemblies, or building new coolant systems from scratch. Backed by Tatvam Tools quality assurance for consistent performance and reliability.'
+        },
+        {
+            id: 'spout-assembly',
+            name: 'Spout Assembly',
+            shortDesc: 'Complete spout assembly for coolant pipe systems',
+            badge: 'Complete Kit',
+            folder: 'Spout-Assembly',
+            coverImage: '20251204_161517.jpg',
+            images: [
+                { src: '20241007_171524 (1).jpg', alt: 'Spout Assembly - View 1' },
+                { src: '20251201_132235 (1) (1) (1).jpg', alt: 'Spout Assembly - View 2' },
+                { src: '20251204_161433.jpg', alt: 'Spout Assembly - View 3' },
+                { src: '20251204_161517.jpg', alt: 'Spout Assembly - View 4' },
+                { src: '20251204_161544.jpg', alt: 'Spout Assembly - View 5' },
+                { src: '20251204_161618.jpg', alt: 'Spout Assembly - View 6' }
+            ],
+            specs: [
+                { label: 'Type', value: 'Complete Assembly' },
+                { label: 'Includes', value: 'Spout + Fittings' },
+                { label: 'Material', value: 'Industrial Grade' },
+                { label: 'Key Feature', value: 'Ready to Install' },
+                { label: 'Thread Type', value: 'BSP Standard' }
+            ],
+            description: 'The complete Spout Assembly from Tatvam Tools provides everything you need for professional coolant pipe installation in a single, ready-to-install package. This comprehensive kit includes precision-machined spout components and all necessary fittings, eliminating the hassle of sourcing individual parts. Manufactured with industrial-grade materials to withstand the demanding conditions of machining environments, including coolant exposure, temperature variations, and continuous vibration. Features standard BSP threading for universal compatibility with most machine tool coolant systems. The ergonomic spout design enables precise coolant direction adjustment while maintaining a secure, leak-proof connection. Ideal for new installations, system upgrades, or replacement of worn components. Quality-tested at our facility to ensure reliable performance from day one. Available in multiple thread sizes to accommodate various machine requirements. The perfect solution for maintenance professionals and machine builders seeking reliable, high-quality coolant system components.'
+        },
+        {
+            id: 'pu-hammer',
+            name: 'PU Hammer',
+            shortDesc: 'High-quality polyurethane hammer for industrial use',
+            badge: 'Tool',
+            folder: 'PU-Hammer',
+            coverImage: 'PU-Hammer(Orange).PNG',
+            images: [
+                { src: 'PU-Hammer(Orange).PNG', alt: 'PU Hammer - Orange' },
+                { src: 'IMG_20201007_125256.jpg', alt: 'PU Hammer - View 1' },
+                { src: 'IMG_20201007_125354.jpg', alt: 'PU Hammer - View 2' },
+                { src: 'IMG_20201007_125507.jpg', alt: 'PU Hammer - View 3' },
+                { src: 'IMG_20210410_111004.jpg', alt: 'PU Hammer - View 4' },
+                { src: 'Capture.GIF', alt: 'PU Hammer - Animation' }
+            ],
+            specs: [
+                { label: 'Type', value: 'PU Hammer' },
+                { label: 'Brand', value: 'Tatvam' },
+                { label: 'Head Diameter', value: '25mm, 40mm, 50mm, 65mm' },
+                { label: 'Material', value: 'Polyurethane Head' },
+                { label: 'Handle', value: 'Ergonomic Grip' },
+                { label: 'Key Feature', value: 'Non-Marring Surface' }
+            ],
+            description: 'The Tatvam PU Hammer represents the pinnacle of industrial hand tool engineering, designed for applications requiring controlled striking force without surface damage. The premium polyurethane head delivers powerful impact while protecting delicate workpieces, polished surfaces, and precision components from marring, denting, or scratching. Ideal for assembly operations, machinery installation, positioning of components, and applications where traditional metal hammers would cause damage. The ergonomically designed handle provides exceptional grip comfort and reduces operator fatigue during extended use. Available in multiple weight configurations to suit various applications, from light-duty assembly work to heavy-duty industrial positioning tasks. The high-quality polyurethane head material offers excellent durability and consistent rebound characteristics, maintaining its shape and performance over thousands of impacts. A essential tool for machine shops, assembly lines, maintenance operations, and precision manufacturing facilities where workpiece integrity is paramount.'
+        }
+    ];
+
+    // ========== RENDER PRODUCT CARDS ==========
+    function renderProductCards() {
+        const grid = document.getElementById('productsGrid');
+        grid.innerHTML = products.map((product, index) => {
+            const imagePath = product.coverImage
+                ? `assets/images/products/${product.folder}/${product.coverImage}`
+                : null;
+
+            return `
+                    <div class="product-card" onclick="showProductDetail('${product.id}')" style="animation-delay: ${index * 0.1}s">
+                        <div class="product-card-image">
+                            ${imagePath ?
+                    `<img src="${imagePath}" alt="${product.name}" loading="lazy">` :
+                    `<div class="image-placeholder-card">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                                        <circle cx="8.5" cy="8.5" r="1.5" />
+                                        <polyline points="21 15 16 10 5 21" />
+                                    </svg>
+                                    <span>Image Coming Soon</span>
+                                </div>`
+                }
+                        </div>
+                        <div class="product-card-content">
+                            <h3>${product.name}</h3>
+                            <p>${product.shortDesc}</p>
+                            <div class="product-card-footer">
+                                <span class="view-details">
+                                    View Details
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="gallery-thumbs">
-                        <img src="assets/images/products/metal-coolant-pipe/metal-coolant-pipe(cover).jpg"
-                            alt="Steel Coolant Pipe - Cover View" class="thumb active"
-                            onclick="changeImage(this, 'mainImage1')">
-                        <img src="assets/images/products/metal-coolant-pipe/metal-coolant-pipe(curved).jpg"
-                            alt="Steel Coolant Pipe - Curved View" class="thumb"
-                            onclick="changeImage(this, 'mainImage1')">
-                        <img src="assets/images/products/metal-coolant-pipe/metal-Coolant-Pipe(round).jpeg"
-                            alt="Steel Coolant Pipe - Round View" class="thumb"
-                            onclick="changeImage(this, 'mainImage1')">
-                        <img src="assets/images/products/metal-coolant-pipe/metal-Coolant-Pipe(front-angled-left).jpeg"
-                            alt="Steel Coolant Pipe - Front Angled Left View" class="thumb"
-                            onclick="changeImage(this, 'mainImage1')">
-                        <img src="assets/images/products/metal-coolant-pipe/Metal-Coolant-Pipe(front-angled-right).jpeg"
-                            alt="Steel Coolant Pipe - Front Angled Right View" class="thumb"
-                            onclick="changeImage(this, 'mainImage1')">
-                        <img src="assets/images/products/metal-coolant-pipe/metal-Coolant-pipe(back-angled).jpg"
-                            alt="Steel Coolant Pipe - Back Angled View" class="thumb"
-                            onclick="changeImage(this, 'mainImage1')">
-                    </div>
+                `;
+        }).join('');
+    }
+
+    // ========== SHOW PRODUCT DETAIL (Full Page) ==========
+    function showProductDetail(productId) {
+        const product = products.find(p => p.id === productId);
+        if (!product) return;
+
+        // Hide catalog, show detail section
+        document.getElementById('catalog').style.display = 'none';
+        document.getElementById('cta').style.display = 'none';
+        document.getElementById('productDetail').style.display = 'block';
+
+        const content = document.getElementById('productDetailContent');
+
+        // Build images for gallery
+        const galleryImages = product.images.map((img, index) => {
+            const imgPath = `assets/images/products/${product.folder}/${img.src}`;
+            return `<img src="${imgPath}" alt="${img.alt}" class="thumb ${index === 0 ? 'active' : ''}" 
+                        onclick="changeDetailImage(this, '${imgPath}')">`;
+        }).join('');
+
+        // Add video thumb if exists
+        const videoThumb = product.video ? `
+                <div class="video-thumb thumb" onclick="changeToDetailVideo('assets/images/products/${product.folder}/${product.video}')">
+                    <img src="assets/images/products/${product.folder}/${product.images[0]?.src || ''}" 
+                         alt="Video Preview" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
                 </div>
-                <div class="product-details">
-                    <h3>Steel Flexible Coolant Pipe</h3>
-                    <div class="product-description-wrapper">
-                        <p class="product-description collapsed" id="steel-desc">Engineered for industrial excellence,
-                            our Steel Flexible Coolant Pipes represent the pinnacle of precision coolant delivery
-                            technology. Manufactured in-house under stringent quality control protocols, these pipes
-                            feature premium-grade steel construction rated for 50+ bar operating pressure and 90°C
-                            maximum working temperature. The innovative flexible segment design ensures zero-leak
-                            performance while enabling precise directional coolant flow optimization. Modular
-                            architecture allows individual procurement of Part Elements, Threaded Adapters (BSP
-                            standard), and specialized Nozzles for complete system customization. Trusted by
-                            manufacturing facilities nationwide, our coolant pipes deliver exceptional performance
-                            across CNC machining centers, VMC units, conventional Lathes, Milling machines, Surface
-                            Grinders, Drilling equipment, Boring machines, EDM systems, and Shaping operations. Backed
-                            by Tatvam Tools' commitment to quality and comprehensive after-sales support.</p>
-                        <button class="read-more-btn" onclick="toggleDescription('steel-desc', this)">Read More</button>
-                    </div>
-                    <div class="product-features">
-                        <div class="feature-item">
-                            <span class="feature-label">Material</span>
-                            <span class="feature-value">Steel</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-label">Brand</span>
-                            <span class="feature-value">Tatvam Tools</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-label">Thread Sizes</span>
-                            <span class="feature-value">¼", ⅜", ½" BSP</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-label">Length</span>
-                            <span class="feature-value">Starting 2" up to required</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-label">Key Feature</span>
-                            <span class="feature-value">Adjustable & Leak-proof</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-label">Parts Available</span>
-                            <span class="feature-value">Separately Purchasable</span>
-                        </div>
-                    </div>
-                    <div class="product-actions">
-                        <a href="contact.html" class="btn-primary">
-                            <span>Request Quote</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
-                        </a>
-                        <a href="tel:9924361415" class="btn-secondary">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path
-                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                            </svg>
-                            <span>Call Now</span>
-                        </a>
-                    </div>
+            ` : '';
+
+        // Build specs
+        const specsHtml = product.specs.map(spec => `
+                <div class="feature-item">
+                    <span class="feature-label">${spec.label}</span>
+                    <span class="feature-value">${spec.value}</span>
                 </div>
-            </div>
-        </div>
-    </section>
+            `).join('');
 
-    <!-- Product 2: Plastic Flexible Coolant Pipe -->
-    <section class="product-section plastic-product" id="plastic">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Product 2</span>
-                <h2 class="section-title">Plastic <span class="highlight">Flexible Coolant Pipe</span> & Fittings
-                </h2>
-                <p class="section-subtitle">Adjustable, leak-proof PP pipes and fittings for precise coolant flow
-                </p>
-            </div>
+        // Main image
+        const mainImageSrc = product.coverImage
+            ? `assets/images/products/${product.folder}/${product.coverImage}`
+            : '';
 
-            <!-- Main Product Overview -->
-            <div class="product-showcase">
-                <div class="product-gallery">
-                    <div class="gallery-main">
-                        <div class="image-placeholder">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                                <circle cx="8.5" cy="8.5" r="1.5" />
-                                <polyline points="21 15 16 10 5 21" />
-                            </svg>
-                            <span>Product Image Coming Soon</span>
-                        </div>
-                    </div>
+        content.innerHTML = `
+                <div class="section-header">
+                    <h2 class="section-title">${product.name}</h2>
                 </div>
-                <div class="product-details">
-                    <h3>Plastic Flexible Coolant Pipe & Fittings</h3>
-                    <div class="product-description-wrapper">
-                        <p class="product-description collapsed" id="plastic-desc">Adjustable, leak-proof pipes and
-                            fittings ensure precise coolant flow for machining and industrial applications. Made from
-                            high-quality PP (Polypropylene) material, offering excellent chemical resistance,
-                            flexibility and durability. Our plastic coolant pipes are designed for applications
-                            requiring lightweight construction with superior corrosion resistance. Available in multiple
-                            thread sizes and lengths, these pipes maintain their shape while allowing easy directional
-                            adjustments. Ideal for light-duty machining operations, laboratory equipment, and
-                            environments where chemical resistance is critical.</p>
-                        <button class="read-more-btn" onclick="toggleDescription('plastic-desc', this)">Read
-                            More</button>
-                    </div>
-                    <div class="product-features">
-                        <div class="feature-item">
-                            <span class="feature-label">Material</span>
-                            <span class="feature-value">PP (Polypropylene)</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-label">Brand</span>
-                            <span class="feature-value">Tatvam Tools</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-label">Thread Type</span>
-                            <span class="feature-value">B.S.P. Thread & I.D.</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-label">Nozzle Options</span>
-                            <span class="feature-value">Round / Flat</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-label">Key Feature</span>
-                            <span class="feature-value">Adjustable & Leak-proof</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-label">Custom Length</span>
-                            <span class="feature-value">Available on Request</span>
-                        </div>
-                    </div>
-                    <div class="product-actions">
-                        <a href="contact.html" class="btn-primary">
-                            <span>Request Quote</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
-                        </a>
-                        <a href="#plastic-variants" class="btn-outline" onclick="toggleVariants(event)">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                            <span>View Variants</span>
-                        </a>
-                        <a href="tel:9924361415" class="btn-secondary">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path
-                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                            </svg>
-                            <span>Call Now</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product Variants (Hidden by default, toggled by button) -->
-            <div class="product-variants" id="plastic-variants">
-                <h3 class="variants-title">Available Variants</h3>
-                <div class="variants-grid">
-                    <!-- Variant 1: Regular -->
-                    <div class="variant-card">
-                        <div class="variant-content">
-                            <h4>Regular Flexible Coolant Pipe</h4>
-                            <ul class="variant-specs">
-                                <li><strong>Thread Sizes:</strong> ⅛", ¼", ⅜", ½", ¾" B.S.P. Thread & I.D.</li>
-                                <li><strong>Nozzle:</strong> Round / Flat (any one)</li>
-                                <li><strong>Length:</strong> 4" to 30"</li>
-                                <li><strong>Special Length:</strong> 36", 39", 48", 59" or custom</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Variant 2: With Ball Valve -->
-                    <div class="variant-card">
-                        <div class="variant-content">
-                            <h4>Flexible Coolant Pipe with Ball Valve</h4>
-                            <ul class="variant-specs">
-                                <li><strong>Thread Sizes:</strong> ¼", ⅜", ½" B.S.P. Thread & I.D.</li>
-                                <li><strong>Nozzle:</strong> Round / Flat (any one)</li>
-                                <li><strong>Length:</strong> 4" to 30"</li>
-                                <li><strong>Special Length:</strong> As per customer requirement</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Variant 3: Heavy Duty -->
-                    <div class="variant-card">
-                        <div class="variant-content">
-                            <h4>Heavy Duty Flexible Coolant Pipe</h4>
-                            <ul class="variant-specs">
-                                <li><strong>Thread Sizes:</strong> ½" B.S.P. Thread & I.D.</li>
-                                <li><strong>Nozzle:</strong> Round / Flat (any one)</li>
-                                <li><strong>Length:</strong> 4" to 24"</li>
-                                <li><strong>Special Length:</strong> Custom available</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Variant 4: Circular Nozzle Kit & Magnetic Base -->
-                    <div class="variant-card">
-                        <div class="variant-content">
-                            <h4>Circular Nozzle Kit & Magnetic Base</h4>
-                            <ul class="variant-specs">
-                                <li><strong>Nozzle Kit:</strong> ¼", ½" B.S.P. Thread & I.D.</li>
-                                <li><strong>Magnetic Base:</strong> ¼", ⅜", ½" B.S.P. Thread & I.D.</li>
-                                <li><strong>Length:</strong> 6", 12", 18", 24"</li>
-                                <li><strong>Special Length:</strong> As per customer requirement</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Product 3: Magnetic Base Coolant Hose Holder -->
-    <section class="product-section" id="magnetic-base">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Product 3</span>
-                <h2 class="section-title">Magnetic Base <span class="highlight">Coolant Hose Holder</span></h2>
-                <p class="section-subtitle">Powerful magnetic base with flexible coolant nozzles for quick attachment to
-                    any metallic surface
-                </p>
-            </div>
-            <div class="product-showcase">
-                <div class="product-gallery">
-                    <div class="gallery-main">
-                        <img src="assets/images/products/magnet/magnet-front.jpg"
-                            alt="Magnetic Base Coolant Hose Holder - Front View" id="mainImage3">
-                        <div class="product-badge">New Arrival</div>
-                    </div>
-                    <div class="gallery-thumbs">
-                        <img src="assets/images/products/magnet/magnet-front.jpg"
-                            alt="Magnetic Base Coolant Hose Holder - Front View" class="thumb active"
-                            onclick="changeImage(this, 'mainImage3')">
-                        <img src="assets/images/products/magnet/magnet-back.jpg"
-                            alt="Magnetic Base Coolant Hose Holder - Back View" class="thumb"
-                            onclick="changeImage(this, 'mainImage3')">
-                        <img src="assets/images/products/magnet/magnet-Bottom.jpg"
-                            alt="Magnetic Base Coolant Hose Holder - Bottom View" class="thumb"
-                            onclick="changeImage(this, 'mainImage3')">
-                    </div>
-                </div>
-                <div class="product-details">
-                    <h3>Coolant Flexible Magnetic Base Hoses Holder</h3>
-                    <div class="product-description-wrapper">
-                        <p class="product-description collapsed" id="magnetic-desc">The Coolant Flexible Magnetic Base
-                            Hoses Holder is designed for maximum versatility and convenience in industrial machining
-                            applications. Featuring a powerful 100 lbs magnetic pull, it quickly attaches to any
-                            metallic surface with exceptional holding power. The innovative on-off magnetic base allows
-                            for easy repositioning without scratching your workpiece or machine surface. Equipped with 2
-                            flexible coolant nozzles measuring ¼" BSP, these hoses stay put in any position, directing
-                            coolant exactly where needed. Perfect for CNC machines, lathes, milling machines, grinders,
-                            and other metalworking equipment. The magnetic base design eliminates the need for
-                            additional mounting hardware, making it ideal for temporary setups or frequently changing
-                            production requirements.</p>
-                        <button class="read-more-btn" onclick="toggleDescription('magnetic-desc', this)">Read
-                            More</button>
-                    </div>
-                    <div class="product-features">
-                        <div class="feature-item">
-                            <span class="feature-label">Magnetic Pull</span>
-                            <span class="feature-value">100 lbs</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-label">Brand</span>
-                            <span class="feature-value">Tatvam Tools</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-label">Base Type</span>
-                            <span class="feature-value">On-Off Magnetic Base</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-label">Nozzle Count</span>
-                            <span class="feature-value">2 Flexible Nozzles</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-label">Nozzle Size</span>
-                            <span class="feature-value">¼" BSP</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-label">Key Feature</span>
-                            <span class="feature-value">Strong Holding Power</span>
-                        </div>
-                    </div>
-                    <div class="product-actions">
-                        <a href="contact.html" class="btn-primary">
-                            <span>Request Quote</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
-                        </a>
-                        <a href="tel:9924361415" class="btn-secondary">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path
-                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                            </svg>
-                            <span>Call Now</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section" id="cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Need a Custom Solution?</h2>
-                <p>Contact us for custom lengths, bulk orders, or specific requirements</p>
-                <div class="cta-buttons">
-                    <a href="contact.html" class="btn-primary">
-                        <span>Get Quote</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </a>
-                    <a href="tel:9924361415" class="btn-secondary">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path
-                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                        </svg>
-                        <span>Call Now</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer - Loaded from component -->
-    <div id="footer-placeholder"></div>
-
-    <script src="script.js"></script>
-    <script>
-        // Product gallery image change function for products page
-
-        function changeImage(thumb, mainImageId) {
-            const mainImage = document.getElementById(mainImageId);
-            if (mainImage && thumb) {
-                mainImage.src = thumb.src;
-                // Update active state within the same gallery
-                const gallery = thumb.closest('.gallery-thumbs');
-                gallery.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
-                thumb.classList.add('active');
+                <div class="product-showcase">
+                    <div class="product-left">
+                        <div class="product-gallery">
+                            <div class="gallery-main">
+                                ${mainImageSrc ?
+                `<img src="${mainImageSrc}" alt="${product.name}" id="detailMainImage" onclick="openLightbox(this.src)">` :
+                `<div class="image-placeholder">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                                            <circle cx="8.5" cy="8.5" r="1.5" />
+                                            <polyline points="21 15 16 10 5 21" />
+                                        </svg>
+                                        <span>Image Coming Soon</span>
+                                    </div>`
             }
+                            </div>
+                            ${product.images.length > 0 ? `
+                                <div class="gallery-thumbs">
+                                    ${galleryImages}
+                                    ${videoThumb}
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div class="product-info-cards">
+                            ${specsHtml}
+                        </div>
+                    </div>
+                    <div class="product-details">
+                        <h3>${product.name}</h3>
+                        <div class="product-description-wrapper">
+                            <p class="product-description">
+                                ${product.description || 'Product description coming soon. Contact us for detailed specifications and information about this product.'}
+                            </p>
+                        </div>
+                        <div class="product-actions">
+                            <a href="contact.html" class="btn-primary">
+                                <span>Request Quote</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                            <a href="tel:9924361415" class="btn-secondary">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                                <span>Call Now</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+        // Scroll to top of page
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Update URL hash for bookmarking/sharing
+        history.pushState({ productId }, '', `#${productId}`);
+    }
+
+    // ========== SHOW CATALOG (Back Button) ==========
+    function showCatalog() {
+        document.getElementById('catalog').style.display = 'block';
+        document.getElementById('cta').style.display = 'block';
+        document.getElementById('productDetail').style.display = 'none';
+
+        // Stop any playing video
+        const video = document.querySelector('.gallery-main video');
+        if (video) {
+            video.pause();
+            video.remove();
         }
 
-        // Toggle variants section visibility
-        function toggleVariants(event) {
-            event.preventDefault();
-            const variantsSection = document.getElementById('plastic-variants');
-            const button = event.currentTarget;
+        // Scroll to catalog
+        window.scrollTo({ top: 0, behavior: 'smooth' });
 
-            if (!variantsSection.classList.contains('show')) {
-                // Show variants with animation
-                variantsSection.classList.add('show');
-                button.querySelector('span').textContent = 'Hide Variants';
-                // Scroll to the variants title with offset so it's nicely positioned
-                setTimeout(() => {
-                    const variantsTitle = variantsSection.querySelector('.variants-title');
-                    const yOffset = -100; // offset from top of viewport
-                    const y = variantsTitle.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                    window.scrollTo({ top: y, behavior: 'smooth' });
-                }, 150);
-            } else {
-                // Hide variants with animation
-                variantsSection.classList.remove('show');
-                button.querySelector('span').textContent = 'View Variants';
-                // Scroll back to the plastic product section
-                setTimeout(() => {
-                    const plasticSection = document.getElementById('plastic');
-                    plasticSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
+        // Update URL
+        history.pushState({}, '', 'products.html');
+    }
+
+    // ========== GALLERY FUNCTIONS ==========
+    function changeDetailImage(thumb, src) {
+        const mainContainer = document.querySelector('.gallery-main');
+        let mainImage = document.getElementById('detailMainImage');
+
+        // Remove video if exists
+        const existingVideo = mainContainer.querySelector('video');
+        if (existingVideo) {
+            existingVideo.pause();
+            existingVideo.remove();
+            if (!mainImage) {
+                mainImage = document.createElement('img');
+                mainImage.id = 'detailMainImage';
+                mainImage.onclick = function () { openLightbox(this.src); };
+                mainContainer.insertBefore(mainImage, mainContainer.firstChild);
             }
+            mainImage.style.display = 'block';
         }
 
-        // Toggle product description visibility (Read More / Show Less)
-        function toggleDescription(descId, button) {
-            const description = document.getElementById(descId);
+        if (mainImage) {
+            mainImage.src = src;
+            document.querySelectorAll('.gallery-thumbs .thumb').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+        }
+    }
 
-            if (description.classList.contains('collapsed')) {
-                description.classList.remove('collapsed');
-                description.classList.add('expanded');
-                button.textContent = 'Show Less';
-            } else {
-                description.classList.remove('expanded');
-                description.classList.add('collapsed');
-                button.textContent = 'Read More';
+    function changeToDetailVideo(videoSrc) {
+        const mainContainer = document.querySelector('.gallery-main');
+        const mainImage = document.getElementById('detailMainImage');
+
+        if (mainImage) mainImage.style.display = 'none';
+
+        const existingVideo = mainContainer.querySelector('video');
+        if (existingVideo) existingVideo.remove();
+
+        const video = document.createElement('video');
+        video.src = videoSrc;
+        video.controls = true;
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;
+        video.style.cssText = 'width:100%;height:100%;object-fit:contain;padding:1rem;cursor:pointer;';
+        video.onclick = function () { openLightbox(videoSrc, true); };
+        mainContainer.appendChild(video);
+
+        document.querySelectorAll('.gallery-thumbs .thumb').forEach(t => t.classList.remove('active'));
+        document.querySelector('.video-thumb')?.classList.add('active');
+    }
+
+    // ========== LIGHTBOX ==========
+    function openLightbox(src, isVideo = false) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxVideo = document.getElementById('lightbox-video');
+
+        if (isVideo) {
+            lightboxImage.style.display = 'none';
+            lightboxVideo.style.display = 'block';
+            lightboxVideo.src = src;
+            lightboxVideo.play();
+        } else {
+            lightboxVideo.style.display = 'none';
+            lightboxVideo.pause();
+            lightboxImage.style.display = 'block';
+            lightboxImage.src = src;
+        }
+
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxVideo = document.getElementById('lightbox-video');
+        lightbox.classList.remove('active');
+        lightboxVideo.pause();
+        document.body.style.overflow = '';
+    }
+
+    // Close lightbox on overlay click
+    document.getElementById('lightbox').addEventListener('click', function (e) {
+        if (e.target === this) closeLightbox();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', function (e) {
+        if (e.state && e.state.productId) {
+            showProductDetail(e.state.productId);
+        } else {
+            showCatalog();
+        }
+    });
+
+    // Check URL hash on page load
+    function checkUrlHash() {
+        const hash = window.location.hash.substring(1);
+        if (hash) {
+            const product = products.find(p => p.id === hash);
+            if (product) {
+                showProductDetail(hash);
             }
         }
-    </script>
+    }
 
-    <script src="assets/js/script.js"></script>
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', function () {
+        renderProductCards();
+        checkUrlHash();
+    });
+</script>
+
+<script src="assets/js/script.js"></script>
 </body>
 
 </html>
