@@ -84,8 +84,10 @@
 <!-- Image Lightbox -->
 <div class="lightbox-overlay" id="lightbox">
     <div class="lightbox-content">
-        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-        <img id="lightbox-image" src="" alt="Full size image">
+        <div class="lightbox-image-wrapper" id="lightbox-image-wrapper">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <img id="lightbox-image" src="" alt="Full size image">
+        </div>
         <video id="lightbox-video" src="" controls style="display:none;"></video>
     </div>
 </div>
@@ -509,7 +511,80 @@
         document.querySelector('.video-thumb')?.classList.add('active');
     }
 
-    // ========== LIGHTBOX ==========
+    // ========== LIGHTBOX & ZOOM ==========
+    let zoomState = { scale: 1, x: 0, y: 0 };
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+
+    function initLightboxZoom() {
+        const wrapper = document.getElementById('lightbox-image-wrapper');
+        const img = document.getElementById('lightbox-image');
+
+        // Mouse Wheel Zoom
+        wrapper.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? -0.2 : 0.2;
+            let newScale = zoomState.scale + delta;
+            newScale = Math.min(Math.max(1, newScale), 5); // Clamp between 1x and 5x
+
+            zoomState.scale = newScale;
+
+            if (newScale === 1) {
+                zoomState.x = 0;
+                zoomState.y = 0;
+                wrapper.style.cursor = 'default';
+            } else {
+                wrapper.style.cursor = 'grab';
+            }
+
+            updateImageTransform();
+        });
+
+        // Drag Start
+        wrapper.addEventListener('mousedown', (e) => {
+            if (e.target.classList.contains('lightbox-close')) return; // Don't drag when clicking close
+            if (zoomState.scale > 1) {
+                isDragging = true;
+                startX = e.clientX - zoomState.x;
+                startY = e.clientY - zoomState.y;
+                wrapper.style.cursor = 'grabbing';
+                e.preventDefault();
+            }
+        });
+
+        // Drag Move
+        window.addEventListener('mousemove', (e) => {
+            if (isDragging && zoomState.scale > 1) {
+                e.preventDefault();
+                zoomState.x = e.clientX - startX;
+                zoomState.y = e.clientY - startY;
+                updateImageTransform();
+            }
+        });
+
+        // Drag End
+        window.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                const wrapper = document.getElementById('lightbox-image-wrapper');
+                if (zoomState.scale > 1) wrapper.style.cursor = 'grab';
+            }
+        });
+    }
+
+    function updateImageTransform() {
+        const wrapper = document.getElementById('lightbox-image-wrapper');
+        wrapper.style.transform = `translate(${zoomState.x}px, ${zoomState.y}px) scale(${zoomState.scale})`;
+    }
+
+    function resetZoom() {
+        zoomState = { scale: 1, x: 0, y: 0 };
+        isDragging = false;
+        updateImageTransform();
+        const wrapper = document.getElementById('lightbox-image-wrapper');
+        if (wrapper) wrapper.style.cursor = 'default';
+    }
     function openLightbox(src, isVideo = false) {
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightbox-image');
@@ -525,6 +600,7 @@
             lightboxVideo.pause();
             lightboxImage.style.display = 'block';
             lightboxImage.src = src;
+            resetZoom();
         }
 
         lightbox.classList.add('active');
@@ -573,6 +649,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         renderProductCards();
         checkUrlHash();
+        initLightboxZoom();
     });
 </script>
 
