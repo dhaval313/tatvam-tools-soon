@@ -69,19 +69,11 @@
         <div class="hero-image">
             <div class="image-glow"></div>
             <img src="assets/images/products/metal-coolant-pipe/metal-coolant-pipe(cover).jpg"
-                alt="Premium Metal Coolant Pipe" onclick="openHeroLightbox(this.src)">
+                alt="Premium Metal Coolant Pipe">
         </div>
     </section>
 
-    <!-- Hero Lightbox -->
-    <div class="lightbox-overlay" id="hero-lightbox">
-        <div class="lightbox-content">
-            <div class="lightbox-image-wrapper">
-                <button class="lightbox-close" onclick="closeHeroLightbox()">&times;</button>
-                <img id="hero-lightbox-image" src="" alt="Full size image">
-            </div>
-        </div>
-    </div>
+
 
     <!-- Features Section -->
     <section class="features" id="features">
@@ -228,32 +220,7 @@
     <div id="footer-placeholder"></div>
 
     <script src="assets/js/script.js"></script>
-    <script>
-        // Hero Lightbox functions
-        function openHeroLightbox(src) {
-            const lightbox = document.getElementById('hero-lightbox');
-            const lightboxImage = document.getElementById('hero-lightbox-image');
-            lightboxImage.src = src;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
 
-        function closeHeroLightbox() {
-            const lightbox = document.getElementById('hero-lightbox');
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Close lightbox on overlay click
-        document.getElementById('hero-lightbox').addEventListener('click', function (e) {
-            if (e.target === this) closeHeroLightbox();
-        });
-
-        // Close lightbox on Escape key
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') closeHeroLightbox();
-        });
-    </script>
 </body>
 
 </html>

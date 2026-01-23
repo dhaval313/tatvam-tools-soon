@@ -88,12 +88,28 @@
             <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
             <img id="lightbox-image" src="" alt="Full size image">
         </div>
+        <button class="lightbox-prev" onclick="prevImage()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="lightbox-next" onclick="nextImage()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+        <video id="lightbox-video" src="" controls style="display:none;"></video>
         <video id="lightbox-video" src="" controls style="display:none;"></video>
     </div>
 </div>
 
 <script>
     // ========== PRODUCT DATA ==========
+    // ========== PRODUCT DATA ==========
+    let currentActiveProduct = null;
+    let currentLightboxMedia = [];
+    let currentLightboxIndex = 0;
+
     const products = [
         {
             id: 'metal-coolant-pipe',
@@ -193,7 +209,7 @@
                 { label: 'Material', value: 'PP++' },
                 { label: 'Thread Sizes', value: '¼", ½" BSP' },
                 { label: 'Flow Type', value: '360° Circular' },
-                { label: 'Application', value: 'CNC & VMC Machines' },
+                { label: 'Application', value: 'CNC, VMC, Lathe, Milling, Grinding, EDM, Drilling' },
                 { label: 'Key Feature', value: 'Uniform Coolant Distribution' }
             ],
             description: 'Introducing our premium Circular Flow Coolant Pipe, engineered to deliver unparalleled 360-degree coolant distribution for precision machining applications. This innovative nozzle design ensures uniform coolant coverage around the entire cutting zone, significantly improving tool life and surface finish quality. Ideal for high-speed CNC machining centers, VMC operations, and applications where conventional directional nozzles fall short. The circular flow pattern eliminates hot spots, reduces thermal shock, and maintains consistent chip evacuation during demanding machining operations. Manufactured with industrial-grade materials for exceptional durability and corrosion resistance. Available in multiple sizes to accommodate various spindle configurations and flow requirements. Trusted by precision manufacturing facilities for operations requiring superior thermal management and extended tool longevity.'
@@ -245,7 +261,7 @@
                 { label: 'Material', value: 'PP++' },
                 { label: 'Compatibility', value: 'Universal Fit' },
                 { label: 'Key Feature', value: 'Modular Assembly' },
-                { label: 'Quantity', value: 'Bulk Available' }
+
             ],
             description: 'Our Coolant Pipe Elements are the fundamental building blocks for creating custom coolant delivery systems tailored to your specific machining requirements. Each element is precision-manufactured from high-quality polymer material that offers excellent chemical resistance, flexibility, and long-term durability. The modular design allows you to create coolant pipes of any length by simply connecting multiple elements together, providing unlimited flexibility for unique machine configurations. Universal compatibility ensures seamless integration with both our steel and plastic coolant pipe systems. Available in various segment sizes to accommodate different flow requirements and installation spaces. Sold individually or in bulk quantities for cost-effective inventory management. These essential components are the perfect solution for replacement parts, custom assemblies, or building new coolant systems from scratch. Backed by Tatvam Tools quality assurance for consistent performance and reliability.'
         },
@@ -341,8 +357,9 @@
 
     // ========== SHOW PRODUCT DETAIL (Full Page) ==========
     function showProductDetail(productId) {
-        const product = products.find(p => p.id === productId);
-        if (!product) return;
+        currentActiveProduct = products.find(p => p.id === productId);
+        if (!currentActiveProduct) return;
+        const product = currentActiveProduct;
 
         // Hide catalog, show detail section
         document.getElementById('catalog').style.display = 'none';
@@ -585,27 +602,101 @@
         const wrapper = document.getElementById('lightbox-image-wrapper');
         if (wrapper) wrapper.style.cursor = 'default';
     }
+    function prepareLightboxMedia() {
+        if (!currentActiveProduct) return [];
+        const folder = currentActiveProduct.folder;
+        const items = currentActiveProduct.images.map(img => ({
+            type: 'image',
+            src: `assets/images/products/${folder}/${img.src}`,
+            alt: img.alt
+        }));
+        if (currentActiveProduct.video) {
+            items.push({
+                type: 'video',
+                src: `assets/images/products/${folder}/${currentActiveProduct.video}`,
+                alt: 'Product Video'
+            });
+        }
+        return items;
+    }
+
     function openLightbox(src, isVideo = false) {
         const lightbox = document.getElementById('lightbox');
+
+        // Prepare playlist
+        currentLightboxMedia = prepareLightboxMedia();
+
+        // Find index of current src
+        // Note: src passed in might vary (absolute vs relative), so check carefully
+        // The src passed to openLightbox is usually from the DOM (this.src), which is absolute.
+        // Our prepared items act as source of truth.
+        // We will try to match by filename if absolute match fails.
+
+        currentLightboxIndex = currentLightboxMedia.findIndex(item => {
+            // Simple check if src ends with item.src (handling relative/absolute diff)
+            // or exact match if possible
+            return src.includes(item.src) || (item.type === 'video' && src.includes(item.src));
+        });
+
+        if (currentLightboxIndex === -1) currentLightboxIndex = 0;
+
+        updateLightboxContent(currentLightboxMedia[currentLightboxIndex]);
+        updateNavButtons();
+
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function updateLightboxContent(item) {
         const lightboxImage = document.getElementById('lightbox-image');
         const lightboxVideo = document.getElementById('lightbox-video');
 
-        if (isVideo) {
+        if (item.type === 'video') {
             lightboxImage.style.display = 'none';
             lightboxVideo.style.display = 'block';
-            lightboxVideo.src = src;
+            lightboxVideo.src = item.src;
             lightboxVideo.play();
         } else {
             lightboxVideo.style.display = 'none';
             lightboxVideo.pause();
             lightboxImage.style.display = 'block';
-            lightboxImage.src = src;
+            lightboxImage.src = item.src;
             resetZoom();
         }
-
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
     }
+
+    function updateNavButtons() {
+        const prevBtn = document.querySelector('.lightbox-prev');
+        const nextBtn = document.querySelector('.lightbox-next');
+
+        if (currentLightboxMedia.length <= 1) {
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+        } else {
+            prevBtn.style.display = 'flex';
+            nextBtn.style.display = 'flex';
+        }
+    }
+
+    function nextImage() {
+        if (currentLightboxMedia.length <= 1) return;
+        currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxMedia.length;
+        updateLightboxContent(currentLightboxMedia[currentLightboxIndex]);
+    }
+
+    function prevImage() {
+        if (currentLightboxMedia.length <= 1) return;
+        currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxMedia.length) % currentLightboxMedia.length;
+        updateLightboxContent(currentLightboxMedia[currentLightboxIndex]);
+    }
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', function (e) {
+        if (!document.getElementById('lightbox').classList.contains('active')) return;
+
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextImage();
+    });
 
     function closeLightbox() {
         const lightbox = document.getElementById('lightbox');

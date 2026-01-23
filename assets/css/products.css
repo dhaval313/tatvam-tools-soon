@@ -591,3 +591,63 @@
     position: relative;
 }
 
+/* Lightbox Navigation */
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    color: #1a1a2e; /* Dark color for icon */
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: #ffffff;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+.lightbox-prev {
+    left: -70px; /* Move outside the image */
+}
+
+.lightbox-next {
+    right: -70px; /* Move outside the image */
+}
+
+.lightbox-prev svg,
+.lightbox-next svg {
+    width: 28px;
+    height: 28px;
+    stroke: currentColor;
+    stroke-width: 2.5;
+}
+
+@media (max-width: 1200px) {
+    .lightbox-prev { left: -20px; }
+    .lightbox-next { right: -20px; }
+}
+
+@media (max-width: 768px) {
+    .lightbox-prev,
+    .lightbox-next {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.9);
+    }
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
+}
+
