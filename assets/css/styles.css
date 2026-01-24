@@ -2290,15 +2290,16 @@ html {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   display: block;
 }
-/* Close button - positioned relative to image wrapper */
+/* Close button - positioned fixed in overlay */
+/* Close button - positioned fixed in overlay */
 .lightbox-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 40px;
-  height: 40px;
-  background: rgba(0, 0, 0, 0.7);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  top: 30px;
+  right: 30px;
+  width: 44px;
+  height: 44px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   color: white;
   font-size: 1.5rem;
@@ -2307,8 +2308,10 @@ html {
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  z-index: 10;
+  z-index: 1002;
   line-height: 1;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 .lightbox-close:hover {
   background: var(--secondary);
@@ -2713,5 +2716,15 @@ html {
   }
   .make-in-india-footer {
     height: 36px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .lightbox-close {
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
   }
 }
