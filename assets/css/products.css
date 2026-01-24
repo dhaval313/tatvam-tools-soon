@@ -620,11 +620,11 @@
 }
 
 .lightbox-prev {
-    left: -70px; /* Move outside the image */
+    left: 40px;
 }
 
 .lightbox-next {
-    right: -70px; /* Move outside the image */
+    right: 40px;
 }
 
 .lightbox-prev svg,
@@ -636,8 +636,8 @@
 }
 
 @media (max-width: 1200px) {
-    .lightbox-prev { left: -20px; }
-    .lightbox-next { right: -20px; }
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
 }
 
 @media (max-width: 768px) {
