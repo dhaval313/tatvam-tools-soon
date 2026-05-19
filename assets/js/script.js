@@ -118,10 +118,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Header scroll effect
-    const header = document.querySelector('.header');
     let lastScroll = 0;
 
     window.addEventListener('scroll', () => {
+        const header = document.querySelector('.header');
+        if (!header) return;
+
         const currentScroll = window.pageYOffset;
 
         if (currentScroll > 50) {
