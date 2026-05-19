@@ -363,8 +363,10 @@ p {
   animation: fadeInRight 0.8s ease 0.3s both;
 }
 .hero-image img {
-  width: 100%;
-  border-radius: var(--radius-2xl);
+  width: auto;
+  max-width: 100%;
+  max-height: 70vh;
+  margin: 0 auto;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease;
 }
