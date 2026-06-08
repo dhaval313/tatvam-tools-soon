@@ -491,7 +491,7 @@ section {
 }
 .product-showcase {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 2.5rem;
   align-items: start;
 }
@@ -499,6 +499,8 @@ section {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  min-width: 0;
+  width: 100%;
 }
 .product-gallery {
   background: white;
@@ -508,6 +510,7 @@ section {
   border: 2px solid var(--gray-200);
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .gallery-main {
   position: relative;
@@ -553,8 +556,32 @@ section {
   gap: 0.75rem;
   padding: 1rem;
   background: var(--gray-100);
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-content: flex-start !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--gray-200);
+}
+
+/* Custom Scrollbar for Chrome, Safari and Opera */
+.gallery-thumbs::-webkit-scrollbar {
+  height: 6px;
+}
+
+.gallery-thumbs::-webkit-scrollbar-track {
+  background: var(--gray-200);
+  border-radius: var(--radius-full);
+}
+
+.gallery-thumbs::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: var(--radius-full);
+}
+
+.gallery-thumbs::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-dark);
 }
 .gallery-thumbs .thumb {
   width: 70px;
@@ -605,6 +632,7 @@ section {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-width: 0;
 }
 .product-details h3 {
   font-family: var(--font-primary);
@@ -2384,7 +2412,7 @@ html {
     grid-template-columns: repeat(2, 1fr);
   }
   .product-showcase {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .product-left {
     max-width: 600px;
