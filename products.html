@@ -389,6 +389,32 @@
             description: 'Adjustable, leak-proof pipes and fittings ensure precise coolant flow for machining and industrial applications. Made from high-quality PP (Polypropylene) material, offering excellent chemical resistance, flexibility and durability. Our plastic coolant pipes are designed for applications requiring lightweight construction with superior corrosion resistance. Available in multiple thread sizes and lengths, these pipes maintain their shape while allowing easy directional adjustments. Ideal for light-duty machining operations, laboratory equipment, and environments where chemical resistance is critical.'
         },
         {
+            id: 'y-coolant-pipe',
+            name: 'Plastic Y-Coolant Pipe',
+            shortDesc: 'Premium plastic Y-coolant pipes with dual output nozzles',
+            badge: 'New Arrival',
+            folder: 'Y-Coolant-Pipe',
+            coverImage: '1-4/Y - 1-4x12/20260610_162136.jpeg',
+            images: [
+                { src: '1-4/Y - 1-4x12/20260610_162136.jpeg', alt: 'Plastic Y-Coolant Pipe - Overview', size: 'all', length: 'all' },
+                { src: '1-4/Y - 1-4x12/20260610_162136.jpeg', alt: 'Plastic Y-Coolant Pipe 1/4" - 12" - View 1', size: '1/4', length: '12' },
+                { src: '1-4/Y - 1-4x12/20260610_162327.jpeg', alt: 'Plastic Y-Coolant Pipe 1/4" - 12" - View 2', size: '1/4', length: '12' },
+                { src: '1-4/Y - 1-4x12/20260610_162601.jpeg', alt: 'Plastic Y-Coolant Pipe 1/4" - 12" - View 3', size: '1/4', length: '12' },
+                { src: '1-4/Y - 1-4x12/20260610_163206.jpeg', alt: 'Plastic Y-Coolant Pipe 1/4" - 12" - View 4', size: '1/4', length: '12' },
+                { src: '1-4/Y - 1-4x12/20260610_163427.jpeg', alt: 'Plastic Y-Coolant Pipe 1/4" - 12" - View 5', size: '1/4', length: '12' }
+            ],
+            specs: [
+                { label: 'Material', value: 'PP++' },
+                { label: 'Brand', value: 'KRC' },
+                { label: 'Thread Sizes', value: '⅛", ¼", ⅜", ½", ¾" BSP' },
+                { label: 'Shapes', value: 'Straight, Y-shaped' },
+                { label: 'Nozzle Options', value: 'Round / Flat' },
+                { label: 'Key Feature', value: 'Adjustable & Leak-proof' },
+                { label: 'Custom Length', value: 'Available on Request' }
+            ],
+            description: 'Adjustable, leak-proof Y-coolant pipes and fittings ensure precise, dual-directional coolant flow for machining and industrial applications. This product features a single input thread dividing into two separate flexible output nozzle segments, allowing targeted cooling at two distinct points of operation simultaneously. Made from high-quality PP (Polypropylene) material, offering excellent chemical resistance, flexibility, and durability.'
+        },
+        {
             id: 'circular-flow',
             name: 'Circular Flow Coolant Pipe',
             shortDesc: 'Specialized circular nozzle for 360° coolant distribution',
@@ -969,19 +995,16 @@
                 lengthContainer.style.display = 'none';
             } else {
                 lengthContainer.style.display = 'flex';
-                // Always render all length options
+                // Render length options, excluding 30" for 1/4" size
+                const lengths = ['2', '4', '6', '8', '10', '12', '18', '24', '30'];
+                const filteredLengths = size === '1/4' ? lengths.filter(l => l !== '30') : lengths;
+
                 let lengthOptionsHtml = `
                     <button class="length-pill active" data-length="all" onclick="filterGalleryByLength('all')">All</button>
-                    <button class="length-pill" data-length="2" onclick="filterGalleryByLength('2')">2"</button>
-                    <button class="length-pill" data-length="4" onclick="filterGalleryByLength('4')">4"</button>
-                    <button class="length-pill" data-length="6" onclick="filterGalleryByLength('6')">6"</button>
-                    <button class="length-pill" data-length="8" onclick="filterGalleryByLength('8')">8"</button>
-                    <button class="length-pill" data-length="10" onclick="filterGalleryByLength('10')">10"</button>
-                    <button class="length-pill" data-length="12" onclick="filterGalleryByLength('12')">12"</button>
-                    <button class="length-pill" data-length="18" onclick="filterGalleryByLength('18')">18"</button>
-                    <button class="length-pill" data-length="24" onclick="filterGalleryByLength('24')">24"</button>
-                    <button class="length-pill" data-length="30" onclick="filterGalleryByLength('30')">30"</button>
-                `;
+                ` + filteredLengths.map(l => `
+                    <button class="length-pill" data-length="${l}" onclick="filterGalleryByLength('${l}')">${l}"</button>
+                `).join('');
+
                 lengthContainer.innerHTML = `
                     <span class="selector-label">Filter by Length:</span>
                     <div class="selector-options">
