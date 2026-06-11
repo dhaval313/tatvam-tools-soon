@@ -199,6 +199,8 @@
             badge: 'Popular',
             folder: 'Coolant-Pipe',
             coverImage: 'AQ-121908413-1-2-inch-y-coolant-pipe.jpeg',
+            sizes: ['1/4', '3/8', '1/2', '3/4'],
+            lengths: ['2', '4', '6', '8', '10', '12', '18', '24', '30'],
             images: [
                 { src: 'AQ-121908413-1-2-inch-y-coolant-pipe.jpeg', alt: 'Plastic Coolant Pipe - Y Type', size: 'all', length: 'all' },
                 { src: 'MU-121908413-plastic-flexible-coolant-pipe-thared-size-1-4-x18.jpeg', alt: 'Plastic Coolant Pipe - Threaded', size: 'all', length: 'all' },
@@ -395,6 +397,8 @@
             badge: 'New Arrival',
             folder: 'Y-Coolant-Pipe',
             coverImage: '1-4/Y - 1-4x12/20260610_162136.jpeg',
+            sizes: ['1/4', '3/8', '1/2'],
+            lengths: ['6', '12', '18'],
             images: [
                 { src: '1-4/Y - 1-4x12/20260610_162136.jpeg', alt: 'Plastic Y-Coolant Pipe - Overview', size: 'all', length: 'all' },
                 { src: '1-4/Y - 1-4x12/20260610_162136.jpeg', alt: 'Plastic Y-Coolant Pipe 1/4" - 12" - View 1', size: '1/4', length: '12' },
@@ -406,7 +410,7 @@
             specs: [
                 { label: 'Material', value: 'PP++' },
                 { label: 'Brand', value: 'KRC' },
-                { label: 'Thread Sizes', value: '⅛", ¼", ⅜", ½", ¾" BSP' },
+                { label: 'Thread Sizes', value: '⅛", ¼", ⅜", ½" BSP' },
                 { label: 'Shapes', value: 'Straight, Y-shaped' },
                 { label: 'Nozzle Options', value: 'Round / Flat' },
                 { label: 'Key Feature', value: 'Adjustable & Leak-proof' },
@@ -649,15 +653,15 @@
             : '';
 
         // Generate size selector HTML if applicable
+        const productSizes = product.sizes || ['1/4', '3/8', '1/2', '3/4'];
         const sizeSelectorHtml = hasSizes ? `
             <div class="gallery-size-selector">
                 <span class="selector-label">Filter by Size:</span>
                 <div class="selector-options">
                     <button class="size-pill active" data-size="all" onclick="filterGalleryBySize('all')">All</button>
-                    <button class="size-pill" data-size="1/4" onclick="filterGalleryBySize('1/4')">1/4"</button>
-                    <button class="size-pill" data-size="3/8" onclick="filterGalleryBySize('3/8')">3/8"</button>
-                    <button class="size-pill" data-size="1/2" onclick="filterGalleryBySize('1/2')">1/2"</button>
-                    <button class="size-pill" data-size="3/4" onclick="filterGalleryBySize('3/4')">3/4"</button>
+                    ${productSizes.map(sz => `
+                        <button class="size-pill" data-size="${sz}" onclick="filterGalleryBySize('${sz}')">${sz}"</button>
+                    `).join('')}
                 </div>
             </div>
         ` : '';
@@ -995,9 +999,11 @@
                 lengthContainer.style.display = 'none';
             } else {
                 lengthContainer.style.display = 'flex';
-                // Render length options, excluding 30" for 1/4" size
-                const lengths = ['2', '4', '6', '8', '10', '12', '18', '24', '30'];
-                const filteredLengths = size === '1/4' ? lengths.filter(l => l !== '30') : lengths;
+                // Render length options based on currentActiveProduct.lengths metadata
+                const lengths = currentActiveProduct.lengths || ['2', '4', '6', '8', '10', '12', '18', '24', '30'];
+                const filteredLengths = (currentActiveProduct.id === 'coolant-pipe' && size === '1/4') 
+                    ? lengths.filter(l => l !== '30') 
+                    : lengths;
 
                 let lengthOptionsHtml = `
                     <button class="length-pill active" data-length="all" onclick="filterGalleryByLength('all')">All</button>
