@@ -680,7 +680,10 @@
         currentActiveProduct = products.find(p => p.id === productId);
         if (!currentActiveProduct) return;
         const product = currentActiveProduct;
-        currentSelectedSize = 'all'; // Reset selected size filter
+
+        // Check if product has size categories
+        const hasSizes = product.images && product.images.some(img => img.size && img.size !== 'all');
+        currentSelectedSize = hasSizes ? product.sizes[0] : 'all'; // Default to first size if size filtering is enabled
         currentSelectedLength = 'all'; // Reset selected length filter
 
         // Hide catalog, show detail section
@@ -690,12 +693,9 @@
 
         const content = document.getElementById('productDetailContent');
 
-        // Check if product has size categories
-        const hasSizes = product.images && product.images.some(img => img.size && img.size !== 'all');
-
-        // Filter initial images for thumbs (only show size: 'all' if size filtering is enabled)
+        // Filter initial images for thumbs (filter by selected size if size filtering is enabled)
         const initialImages = hasSizes
-            ? product.images.filter(img => img.size === 'all')
+            ? product.images.filter(img => img.size === currentSelectedSize)
             : product.images;
 
         // Build active slides list
@@ -741,15 +741,14 @@
             ? `assets/images/products/${product.folder}/${product.coverImage}`
             : '';
 
-        // Generate size selector HTML if applicable
+        // Generate size selector HTML if applicable (without "All" option)
         const productSizes = product.sizes || ['1/4', '3/8', '1/2', '3/4'];
         const sizeSelectorHtml = hasSizes ? `
             <div class="gallery-size-selector">
                 <span class="selector-label">Filter by Size:</span>
                 <div class="selector-options">
-                    <button class="size-pill active" data-size="all" onclick="filterGalleryBySize('all')">All</button>
-                    ${productSizes.map(sz => `
-                        <button class="size-pill" data-size="${sz}" onclick="filterGalleryBySize('${sz}')">${sz}"</button>
+                    ${productSizes.map((sz, idx) => `
+                        <button class="size-pill ${idx === 0 ? 'active' : ''}" data-size="${sz}" onclick="filterGalleryBySize('${sz}')">${sz}"</button>
                     `).join('')}
                 </div>
             </div>
@@ -835,7 +834,11 @@
         }, 50);
 
         // Initialize active slide and navigation visibility
-        showGallerySlide(0);
+        if (hasSizes) {
+            filterGalleryBySize(currentSelectedSize);
+        } else {
+            showGallerySlide(0);
+        }
 
         // Update URL hash for bookmarking/sharing
         history.pushState({ productId }, '', `#${productId}`);
