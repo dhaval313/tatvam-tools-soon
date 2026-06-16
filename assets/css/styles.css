@@ -592,6 +592,7 @@ section {
   opacity: 0.6;
   transition: all var(--transition-fast);
   border: 3px solid transparent;
+  flex-shrink: 0;
 }
 .gallery-thumbs .thumb:hover,
 .gallery-thumbs .thumb.active {
