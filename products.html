@@ -84,6 +84,7 @@
 <!-- Image Lightbox -->
 <div class="lightbox-overlay" id="lightbox">
     <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <div class="lightbox-counter" id="lightbox-counter">1 / 1</div>
     <div class="lightbox-content">
         <div class="lightbox-image-wrapper" id="lightbox-image-wrapper">
             <img id="lightbox-image" src="" alt="Full size image">
@@ -100,6 +101,9 @@
             <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
     </button>
+    <div class="lightbox-tracker-container">
+        <div class="lightbox-thumbs" id="lightbox-thumbs"></div>
+    </div>
 </div>
 
 <script>
@@ -1224,24 +1228,55 @@
         currentLightboxMedia = prepareLightboxMedia();
 
         // Find index of current src
-        // Note: src passed in might vary (absolute vs relative), so check carefully
-        // The src passed to openLightbox is usually from the DOM (this.src), which is absolute.
-        // Our prepared items act as source of truth.
-        // We will try to match by filename if absolute match fails.
-
         currentLightboxIndex = currentLightboxMedia.findIndex(item => {
-            // Simple check if src ends with item.src (handling relative/absolute diff)
-            // or exact match if possible
             return src.includes(item.src) || (item.type === 'video' && src.includes(item.src));
         });
 
         if (currentLightboxIndex === -1) currentLightboxIndex = 0;
+
+        // Build the bottom thumbnail track
+        buildLightboxThumbnails();
 
         updateLightboxContent(currentLightboxMedia[currentLightboxIndex]);
         updateNavButtons();
 
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
+    }
+
+    function buildLightboxThumbnails() {
+        const thumbsContainer = document.getElementById('lightbox-thumbs');
+        if (!thumbsContainer) return;
+
+        if (currentLightboxMedia.length <= 1) {
+            thumbsContainer.parentElement.style.display = 'none';
+            return;
+        }
+        thumbsContainer.parentElement.style.display = 'flex';
+
+        thumbsContainer.innerHTML = currentLightboxMedia.map((item, index) => {
+            if (item.type === 'video') {
+                return `
+                    <div class="lightbox-thumb-item video-thumb" onclick="jumpToLightboxImage(${index})" data-index="${index}">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px; color: white;">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                    </div>
+                `;
+            } else {
+                return `
+                    <div class="lightbox-thumb-item" onclick="jumpToLightboxImage(${index})" data-index="${index}">
+                        <img src="${item.src}" alt="Thumbnail ${index + 1}">
+                    </div>
+                `;
+            }
+        }).join('');
+    }
+
+    function jumpToLightboxImage(index) {
+        if (index < 0 || index >= currentLightboxMedia.length) return;
+        currentLightboxIndex = index;
+        updateLightboxContent(currentLightboxMedia[index]);
     }
 
     function updateLightboxContent(item) {
@@ -1260,6 +1295,22 @@
             lightboxImage.src = item.src;
             resetZoom();
         }
+
+        // Update textual counter
+        const counter = document.getElementById('lightbox-counter');
+        if (counter) {
+            counter.textContent = `${currentLightboxIndex + 1} / ${currentLightboxMedia.length}`;
+        }
+
+        // Update active class on lightbox thumbnails
+        const thumbs = document.querySelectorAll('#lightbox-thumbs .lightbox-thumb-item');
+        thumbs.forEach((thumb, idx) => {
+            const isActive = idx === currentLightboxIndex;
+            thumb.classList.toggle('active', isActive);
+            if (isActive) {
+                thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+        });
     }
 
     function updateNavButtons() {
@@ -1333,11 +1384,62 @@
         }
     }
 
+    // Swipe gestures support for lightbox mobile view
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    function initLightboxSwipe() {
+        const lightbox = document.getElementById('lightbox');
+        if (!lightbox) return;
+
+        lightbox.addEventListener('touchstart', (e) => {
+            if (zoomState.scale > 1) return;
+            
+            const target = e.target;
+            if (target.closest('.lightbox-close') || target.closest('.lightbox-prev') || target.closest('.lightbox-next') || target.closest('#lightbox-thumbs') || target.closest('video')) {
+                return;
+            }
+
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        lightbox.addEventListener('touchend', (e) => {
+            if (zoomState.scale > 1) return;
+
+            const target = e.target;
+            if (target.closest('.lightbox-close') || target.closest('.lightbox-prev') || target.closest('.lightbox-next') || target.closest('#lightbox-thumbs') || target.closest('video')) {
+                return;
+            }
+
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+    }
+
+    function handleSwipe() {
+        const diffX = touchEndX - touchStartX;
+        const diffY = touchEndY - touchStartY;
+        const threshold = 50;
+
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) {
+            if (diffX > 0) {
+                prevImage();
+            } else {
+                nextImage();
+            }
+        }
+    }
+
     // Initialize on load
     document.addEventListener('DOMContentLoaded', function () {
         renderProductCards();
         checkUrlHash();
         initLightboxZoom();
+        initLightboxSwipe();
     });
 </script>
 
