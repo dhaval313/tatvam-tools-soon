@@ -1045,18 +1045,28 @@
     padding: 6px 14px;
   }
   .lightbox-tracker-container {
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 60vh;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+    top: auto;
+    width: 90%;
+    max-width: 600px;
+    height: auto;
+    flex-direction: row;
   }
   .lightbox-thumbs {
-    padding: 10px 6px;
+    flex-direction: row;
+    padding: 8px 12px;
     gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-height: none;
+    max-width: 100%;
   }
   .lightbox-thumb-item {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
   }
   /* Hide navigation buttons on mobile to allow swipe-only navigation without overlap */
   .lightbox-prev,
