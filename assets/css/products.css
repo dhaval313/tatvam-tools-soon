@@ -260,6 +260,12 @@
   width: 100%;
 }
 
+.product-detail-section .gallery-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
 .product-detail-section .gallery-main {
   position: relative;
   height: 450px;
@@ -267,6 +273,8 @@
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  flex: 1;
+  min-width: 0;
 }
 
 .product-detail-section .gallery-main img,
@@ -285,20 +293,27 @@
 
 .product-detail-section .gallery-thumbs {
   display: flex;
+  flex-direction: column;
   gap: 0.75rem;
   padding: 1rem;
   background: var(--gray-100);
-  justify-content: flex-start !important;
-  flex-wrap: nowrap !important;
-  overflow-x: auto !important;
+  width: 105px;
+  height: 450px;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  flex-shrink: 0;
+  box-sizing: border-box;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: var(--secondary) var(--gray-200);
+  border-right: 1px solid var(--gray-200);
+  align-items: center;
 }
 
 /* Custom Scrollbar for Chrome, Safari and Opera */
 .product-detail-section .gallery-thumbs::-webkit-scrollbar {
+  width: 6px;
   height: 6px;
 }
 
@@ -475,6 +490,22 @@
 
   .product-detail-section {
     padding: 100px 0 4rem;
+  }
+
+  .product-detail-section .gallery-row {
+    flex-direction: column-reverse;
+  }
+
+  .product-detail-section .gallery-thumbs {
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding: 0.75rem;
+    border-right: none;
+    border-top: 1px solid var(--gray-200);
+    align-items: center;
   }
 
   .product-detail-section .gallery-main {
@@ -870,7 +901,7 @@
   flex-wrap: nowrap;
   overflow-x: auto;
   width: 100%;
-  justify-content: flex-start;
+  justify-content: safe center;
   padding-bottom: 0.5rem;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
