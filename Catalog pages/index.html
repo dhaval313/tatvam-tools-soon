@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatvam Tools - Catalog Dashboard</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00a759;
+            --primary-dark: #008847;
+            --dark: #1a1a2e;
+            --dark-light: #16213e;
+            --text-dark: #212529;
+            --text-muted: #6c757d;
+            --bg-light: #f8f9fa;
+            --border-color: #dee2e6;
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius-md: 8px;
+            --radius-sm: 4px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f1f3f5;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Style */
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+            color: white;
+            padding: 30px 40px;
+            border-radius: var(--radius-md);
+            border-bottom: 5px solid var(--primary);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-section {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .brand-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-name span {
+            color: var(--primary);
+        }
+
+        .brand-tagline {
+            font-size: 11px;
+            color: #dee2e6;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .dashboard-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: right;
+        }
+
+        /* Size Group & Cards */
+        .size-group {
+            margin-bottom: 35px;
+        }
+
+        .size-group-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+        }
+
+        .size-group-title::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .catalog-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            text-decoration: none;
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+            position: relative;
+            box-shadow: var(--shadow-md);
+            min-height: 110px;
+        }
+
+        .catalog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .card-len-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+        }
+
+        .card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        .card-footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .catalog-card:hover .card-footer {
+            color: var(--primary);
+        }
+
+        .catalog-card .arrow-icon {
+            transition: transform 0.2s ease, stroke 0.2s ease;
+            stroke: var(--text-muted);
+        }
+
+        .catalog-card:hover .arrow-icon {
+            transform: translateX(4px);
+            stroke: var(--primary);
+        }
+
+        .consolidated-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+        .consolidated-btn:hover {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 50px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="brand-section">
+                <h1 class="brand-name">Tatvam<span>™</span> Tools</h1>
+                <span class="brand-tagline">Quality & Excellence</span>
+            </div>
+            <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
+                <h2 class="dashboard-title">Plastic Coolant Pipe Catalog</h2>
+                <a href="consolidated_catalog.html" class="consolidated-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    View Consolidated 4-Page Catalog
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Cards Section -->
+        
+        <div class="size-group">
+            <h2 class="size-group-title">1/4" Thread Size Configurations</h2>
+            <div class="cards-grid">
+                
+                <a href="catalog_1-4x2.html" class="catalog-card">
+                    <div class="card-len-badge">2"</div>
+                    <div class="card-title">Coolant Pipe 1/4" x 2"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_1-4x4.html" class="catalog-card">
+                    <div class="card-len-badge">4"</div>
+                    <div class="card-title">Coolant Pipe 1/4" x 4"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_1-4x6.html" class="catalog-card">
+                    <div class="card-len-badge">6"</div>
+                    <div class="card-title">Coolant Pipe 1/4" x 6"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_1-4x8.html" class="catalog-card">
+                    <div class="card-len-badge">8"</div>
+                    <div class="card-title">Coolant Pipe 1/4" x 8"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_1-4x10.html" class="catalog-card">
+                    <div class="card-len-badge">10"</div>
+                    <div class="card-title">Coolant Pipe 1/4" x 10"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_1-4x12.html" class="catalog-card">
+                    <div class="card-len-badge">12"</div>
+                    <div class="card-title">Coolant Pipe 1/4" x 12"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_1-4x18.html" class="catalog-card">
+                    <div class="card-len-badge">18"</div>
+                    <div class="card-title">Coolant Pipe 1/4" x 18"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_1-4x24.html" class="catalog-card">
+                    <div class="card-len-badge">24"</div>
+                    <div class="card-title">Coolant Pipe 1/4" x 24"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+            </div>
+        </div>
+        
+        <div class="size-group">
+            <h2 class="size-group-title">3/8" Thread Size Configurations</h2>
+            <div class="cards-grid">
+                
+                <a href="catalog_3-8x2.html" class="catalog-card">
+                    <div class="card-len-badge">2"</div>
+                    <div class="card-title">Coolant Pipe 3/8" x 2"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_3-8x4.html" class="catalog-card">
+                    <div class="card-len-badge">4"</div>
+                    <div class="card-title">Coolant Pipe 3/8" x 4"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_3-8x6.html" class="catalog-card">
+                    <div class="card-len-badge">6"</div>
+                    <div class="card-title">Coolant Pipe 3/8" x 6"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_3-8x8.html" class="catalog-card">
+                    <div class="card-len-badge">8"</div>
+                    <div class="card-title">Coolant Pipe 3/8" x 8"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_3-8x10.html" class="catalog-card">
+                    <div class="card-len-badge">10"</div>
+                    <div class="card-title">Coolant Pipe 3/8" x 10"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_3-8x12.html" class="catalog-card">
+                    <div class="card-len-badge">12"</div>
+                    <div class="card-title">Coolant Pipe 3/8" x 12"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_3-8x18.html" class="catalog-card">
+                    <div class="card-len-badge">18"</div>
+                    <div class="card-title">Coolant Pipe 3/8" x 18"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_3-8x24.html" class="catalog-card">
+                    <div class="card-len-badge">24"</div>
+                    <div class="card-title">Coolant Pipe 3/8" x 24"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_3-8x30.html" class="catalog-card">
+                    <div class="card-len-badge">30"</div>
+                    <div class="card-title">Coolant Pipe 3/8" x 30"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+            </div>
+        </div>
+        
+        <div class="size-group">
+            <h2 class="size-group-title">1/2" Thread Size Configurations</h2>
+            <div class="cards-grid">
+                
+                <a href="catalog_1-2x2.html" class="catalog-card">
+                    <div class="card-len-badge">2"</div>
+                    <div class="card-title">Coolant Pipe 1/2" x 2"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_1-2x4.html" class="catalog-card">
+                    <div class="card-len-badge">4"</div>
+                    <div class="card-title">Coolant Pipe 1/2" x 4"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_1-2x6.html" class="catalog-card">
+                    <div class="card-len-badge">6"</div>
+                    <div class="card-title">Coolant Pipe 1/2" x 6"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_1-2x8.html" class="catalog-card">
+                    <div class="card-len-badge">8"</div>
+                    <div class="card-title">Coolant Pipe 1/2" x 8"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_1-2x10.html" class="catalog-card">
+                    <div class="card-len-badge">10"</div>
+                    <div class="card-title">Coolant Pipe 1/2" x 10"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_1-2x12.html" class="catalog-card">
+                    <div class="card-len-badge">12"</div>
+                    <div class="card-title">Coolant Pipe 1/2" x 12"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_1-2x18.html" class="catalog-card">
+                    <div class="card-len-badge">18"</div>
+                    <div class="card-title">Coolant Pipe 1/2" x 18"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_1-2x24.html" class="catalog-card">
+                    <div class="card-len-badge">24"</div>
+                    <div class="card-title">Coolant Pipe 1/2" x 24"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_1-2x30.html" class="catalog-card">
+                    <div class="card-len-badge">30"</div>
+                    <div class="card-title">Coolant Pipe 1/2" x 30"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+            </div>
+        </div>
+        
+        <div class="size-group">
+            <h2 class="size-group-title">3/4" Thread Size Configurations</h2>
+            <div class="cards-grid">
+                
+                <a href="catalog_3-4x12.html" class="catalog-card">
+                    <div class="card-len-badge">12"</div>
+                    <div class="card-title">Coolant Pipe 3/4" x 12"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_3-4x18.html" class="catalog-card">
+                    <div class="card-len-badge">18"</div>
+                    <div class="card-title">Coolant Pipe 3/4" x 18"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+                <a href="catalog_3-4x24.html" class="catalog-card">
+                    <div class="card-len-badge">24"</div>
+                    <div class="card-title">Coolant Pipe 3/4" x 24"</div>
+                    <div class="card-footer">
+                        <span>View Catalog</span>
+                        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            
+            </div>
+        </div>
+        
+
+        <!-- Footer -->
+        <footer>
+            <p>Tatvam Tools © 2026. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>

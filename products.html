@@ -417,6 +417,14 @@
             lengths: ['6', '12', '12 (6x6x6)', '18'],
             images: [
                 { src: '1-4/Y - 1-4x12/20260610_162136.jpeg', alt: 'Plastic Y-Coolant Pipe - Overview', size: 'all', length: 'all' },
+                // 1/4" - 6"
+                { src: '1-4/Y - 1-4×6/20260612_145601.jpeg', alt: 'Plastic Y-Coolant Pipe 1/4" - 6" - View 1', size: '1/4', length: '6' },
+                { src: '1-4/Y - 1-4×6/20260612_145900.jpeg', alt: 'Plastic Y-Coolant Pipe 1/4" - 6" - View 2', size: '1/4', length: '6' },
+                { src: '1-4/Y - 1-4×6/20260612_150218.jpeg', alt: 'Plastic Y-Coolant Pipe 1/4" - 6" - View 3', size: '1/4', length: '6' },
+                { src: '1-4/Y - 1-4×6/20260612_150307.jpeg', alt: 'Plastic Y-Coolant Pipe 1/4" - 6" - View 4', size: '1/4', length: '6' },
+                { src: '1-4/Y - 1-4×6/20260612_150320.jpeg', alt: 'Plastic Y-Coolant Pipe 1/4" - 6" - View 5', size: '1/4', length: '6' },
+                { src: '1-4/Y - 1-4×6/1781407522862.png', alt: 'Plastic Y-Coolant Pipe 1/4" - 6" - View 6', size: '1/4', length: '6' },
+                // 1/4" - 12"
                 { src: '1-4/Y - 1-4x12/20260610_162136.jpeg', alt: 'Plastic Y-Coolant Pipe 1/4" - 12" - View 1', size: '1/4', length: '12' },
                 { src: '1-4/Y - 1-4x12/20260610_162327.jpeg', alt: 'Plastic Y-Coolant Pipe 1/4" - 12" - View 2', size: '1/4', length: '12' },
                 { src: '1-4/Y - 1-4x12/20260610_162601.jpeg', alt: 'Plastic Y-Coolant Pipe 1/4" - 12" - View 3', size: '1/4', length: '12' },
@@ -431,6 +439,12 @@
                 { src: '1-4/Y - 1-4x18/20260610_164708.jpeg', alt: 'Plastic Y-Coolant Pipe 1/4" - 18" - View 2', size: '1/4', length: '18' },
                 { src: '1-4/Y - 1-4x18/20260610_165320.jpeg', alt: 'Plastic Y-Coolant Pipe 1/4" - 18" - View 3', size: '1/4', length: '18' },
                 { src: '1-4/Y - 1-4x18/20260610_170810.jpeg', alt: 'Plastic Y-Coolant Pipe 1/4" - 18" - View 4', size: '1/4', length: '18' },
+                // 3/8" - 6"
+                { src: '3-8/Y - 3-8×6/20260612_150746.jpeg', alt: 'Plastic Y-Coolant Pipe 3/8" - 6" - View 1', size: '3/8', length: '6' },
+                { src: '3-8/Y - 3-8×6/20260612_151245.jpeg', alt: 'Plastic Y-Coolant Pipe 3/8" - 6" - View 2', size: '3/8', length: '6' },
+                { src: '3-8/Y - 3-8×6/20260612_151300.jpeg', alt: 'Plastic Y-Coolant Pipe 3/8" - 6" - View 3', size: '3/8', length: '6' },
+                { src: '3-8/Y - 3-8×6/20260612_151321.jpeg', alt: 'Plastic Y-Coolant Pipe 3/8" - 6" - View 4', size: '3/8', length: '6' },
+                { src: '3-8/Y - 3-8×6/20260612_151600.jpeg', alt: 'Plastic Y-Coolant Pipe 3/8" - 6" - View 5', size: '3/8', length: '6' },
                 // 3/8" - 12"
                 { src: '3-8/Y - 3-8x12/20260611_153936.jpeg', alt: 'Plastic Y-Coolant Pipe 3/8" - 12" - View 1', size: '3/8', length: '12' },
                 { src: '3-8/Y - 3-8x12/20260611_154016.jpeg', alt: 'Plastic Y-Coolant Pipe 3/8" - 12" - View 2', size: '3/8', length: '12' },
@@ -842,6 +856,16 @@
                                 </svg>
                                 <span>Call Now</span>
                             </a>
+                            ${product.id === 'coolant-pipe' ? `
+                             <a href="Catalog pages/TatvamToolsCatalog.pdf" download="tatvam_tools_plastic_flexible_coolant_pipe.pdf" class="btn-secondary download-catalog-btn" style="border-color: var(--secondary); color: var(--secondary); background: transparent; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                     <polyline points="7 10 12 15 17 10"></polyline>
+                                     <line x1="12" y1="15" x2="12" y2="3"></line>
+                                 </svg>
+                                 <span>Download Catalog</span>
+                             </a>
+                             ` : ''}
                         </div>
                     </div>
                 </div>

@@ -1105,3 +1105,11 @@
     display: none !important;
   }
 }
+
+/* Custom styling for Plastic Coolant Pipe Download Catalog Button hover */
+.product-detail-section .product-actions .download-catalog-btn:hover {
+  background-color: rgba(0, 167, 89, 0.08) !important;
+  color: var(--primary) !important;
+  border-color: var(--primary-dark) !important;
+}
+
