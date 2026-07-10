@@ -1268,14 +1268,15 @@ def generate_consolidated_catalog():
             padding: 20px 0;
         }
 
-        body.printing-pdf {
-            background-color: white;
+        html.printing-pdf, body.printing-pdf {
+            width: 210mm !important;
+            max-width: 210mm !important;
+            min-width: 210mm !important;
+            background-color: white !important;
             padding: 0 !important;
             margin: 0 !important;
             display: block !important;
             text-align: left !important;
-            width: 210mm !important;
-            min-width: 210mm !important;
             overflow-x: hidden !important;
         }
 
@@ -1725,7 +1726,8 @@ def generate_consolidated_catalog():
             btn.style.opacity = "0.7";
             btn.style.pointerEvents = "none";
 
-            // Add print-ready classes to body and catalog-content
+            // Add print-ready classes to html, body, and catalog-content
+            document.documentElement.classList.add('printing-pdf');
             document.body.classList.add('printing-pdf');
             const element = document.getElementById('catalog-content');
             element.classList.add('printing-pdf');
@@ -1747,6 +1749,7 @@ def generate_consolidated_catalog():
                 }};
 
                 html2pdf().set(opt).from(element).save().then(() => {{
+                    document.documentElement.classList.remove('printing-pdf');
                     document.body.classList.remove('printing-pdf');
                     element.classList.remove('printing-pdf');
                     window.scrollTo({{ top: currentScrollY, left: currentScrollX, behavior: 'auto' }});
@@ -1755,6 +1758,7 @@ def generate_consolidated_catalog():
                     btn.style.pointerEvents = "auto";
                 }}).catch(err => {{
                     console.error("PDF generation failed:", err);
+                    document.documentElement.classList.remove('printing-pdf');
                     document.body.classList.remove('printing-pdf');
                     element.classList.remove('printing-pdf');
                     window.scrollTo({{ top: currentScrollY, left: currentScrollX, behavior: 'auto' }});
