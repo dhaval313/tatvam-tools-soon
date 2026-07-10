@@ -1709,32 +1709,35 @@ def generate_consolidated_catalog():
             // Add print-ready class to body to prevent margins and shadow offset issues
             document.body.classList.add('printing-pdf');
 
-            const element = document.getElementById('catalog-content');
-            const opt = {{
-                margin:       0,
-                filename:     'tatvam_tools_consolidated_catalog.pdf',
-                image:        {{ type: 'jpeg', quality: 0.98 }},
-                html2canvas:  {{ scale: 2.2, useCORS: true, logging: false, scrollX: 0, scrollY: 0, windowWidth: element.offsetWidth }},
-                jsPDF:        {{ unit: 'mm', format: 'a4', orientation: 'portrait' }},
-                pagebreak:    {{ mode: ['css'] }}
-            }};
+            // Wait for browser layout reflow and repaint to complete
+            setTimeout(() => {{
+                const element = document.getElementById('catalog-content');
+                const opt = {{
+                    margin:       0,
+                    filename:     'tatvam_tools_consolidated_catalog.pdf',
+                    image:        {{ type: 'jpeg', quality: 0.98 }},
+                    html2canvas:  {{ scale: 2.2, useCORS: true, logging: false, scrollX: 0, scrollY: 0, windowWidth: element.offsetWidth }},
+                    jsPDF:        {{ unit: 'mm', format: 'a4', orientation: 'portrait' }},
+                    pagebreak:    {{ mode: ['css'] }}
+                }};
 
-            return html2pdf().set(opt).from(element).save().then(() => {{
-                document.body.classList.remove('printing-pdf');
-                window.scrollTo(currentScrollX, currentScrollY);
-                btn.innerHTML = originalText;
-                btn.style.opacity = "1";
-                btn.style.pointerEvents = "auto";
-            }}).catch(err => {{
-                console.error("PDF generation failed:", err);
-                document.body.classList.remove('printing-pdf');
-                window.scrollTo(currentScrollX, currentScrollY);
-                btn.innerHTML = originalText;
-                btn.style.opacity = "1";
-                btn.style.pointerEvents = "auto";
-                alert("Failed to generate PDF. Opening standard print window instead.");
-                window.print();
-            }});
+                html2pdf().set(opt).from(element).save().then(() => {{
+                    document.body.classList.remove('printing-pdf');
+                    window.scrollTo(currentScrollX, currentScrollY);
+                    btn.innerHTML = originalText;
+                    btn.style.opacity = "1";
+                    btn.style.pointerEvents = "auto";
+                }}).catch(err => {{
+                    console.error("PDF generation failed:", err);
+                    document.body.classList.remove('printing-pdf');
+                    window.scrollTo(currentScrollX, currentScrollY);
+                    btn.innerHTML = originalText;
+                    btn.style.opacity = "1";
+                    btn.style.pointerEvents = "auto";
+                    alert("Failed to generate PDF. Opening standard print window instead.");
+                    window.print();
+                }});
+            }}, 200); // 200ms delay
         }}
     </script>
 
