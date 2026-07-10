@@ -1248,6 +1248,10 @@ def generate_consolidated_catalog():
             padding: 0;
         }
 
+        html, body {
+            scroll-behavior: auto !important;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text-dark);
@@ -1266,11 +1270,30 @@ def generate_consolidated_catalog():
 
         body.printing-pdf {
             background-color: white;
-            padding: 0;
-            margin: 0;
+            padding: 0 !important;
+            margin: 0 !important;
+            display: block !important;
+            text-align: left !important;
             width: 210mm !important;
             min-width: 210mm !important;
             overflow-x: hidden !important;
+        }
+
+        #catalog-content.printing-pdf {
+            width: 210mm !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: block !important;
+            text-align: left !important;
+        }
+
+        #catalog-content.printing-pdf .a4-page {
+            height: 295mm !important;
+            padding: 5mm 10mm !important;
+            margin: 0 !important;
+            box-shadow: none !important;
+            page-break-after: always !important;
+            page-break-inside: avoid !important;
         }
 
         /* Non-Printable Utility Control Bar */
@@ -1702,42 +1725,46 @@ def generate_consolidated_catalog():
             btn.style.opacity = "0.7";
             btn.style.pointerEvents = "none";
 
+            // Add print-ready classes to body and catalog-content
+            document.body.classList.add('printing-pdf');
+            const element = document.getElementById('catalog-content');
+            element.classList.add('printing-pdf');
+
+            // Force instant scroll to top (overriding CSS scroll-behavior: smooth)
             const currentScrollY = window.scrollY;
             const currentScrollX = window.scrollX;
-            window.scrollTo(0, 0);
-
-            // Add print-ready class to body to prevent margins and shadow offset issues
-            document.body.classList.add('printing-pdf');
+            window.scrollTo({{ top: 0, left: 0, behavior: 'auto' }});
 
             // Wait for browser layout reflow and repaint to complete
             setTimeout(() => {{
-                const element = document.getElementById('catalog-content');
                 const opt = {{
                     margin:       0,
                     filename:     'tatvam_tools_consolidated_catalog.pdf',
                     image:        {{ type: 'jpeg', quality: 0.98 }},
-                    html2canvas:  {{ scale: 2.2, useCORS: true, logging: false, scrollX: 0, scrollY: 0, windowWidth: element.offsetWidth }},
+                    html2canvas:  {{ scale: 2.2, useCORS: true, logging: false, scrollX: 0, scrollY: 0, windowWidth: 794 }},
                     jsPDF:        {{ unit: 'mm', format: 'a4', orientation: 'portrait' }},
                     pagebreak:    {{ mode: ['css'] }}
                 }};
 
                 html2pdf().set(opt).from(element).save().then(() => {{
                     document.body.classList.remove('printing-pdf');
-                    window.scrollTo(currentScrollX, currentScrollY);
+                    element.classList.remove('printing-pdf');
+                    window.scrollTo({{ top: currentScrollY, left: currentScrollX, behavior: 'auto' }});
                     btn.innerHTML = originalText;
                     btn.style.opacity = "1";
                     btn.style.pointerEvents = "auto";
                 }}).catch(err => {{
                     console.error("PDF generation failed:", err);
                     document.body.classList.remove('printing-pdf');
-                    window.scrollTo(currentScrollX, currentScrollY);
+                    element.classList.remove('printing-pdf');
+                    window.scrollTo({{ top: currentScrollY, left: currentScrollX, behavior: 'auto' }});
                     btn.innerHTML = originalText;
                     btn.style.opacity = "1";
                     btn.style.pointerEvents = "auto";
                     alert("Failed to generate PDF. Opening standard print window instead.");
                     window.print();
                 }});
-            }}, 200); // 200ms delay
+            }}, 250); // 250ms delay to ensure repaint is finished
         }}
     </script>
 
