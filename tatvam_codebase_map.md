@@ -434,7 +434,7 @@ Below is the structure and branding content extracted from the core pages.
     <section class="history-section">
         <h2>Our <span class="highlight">History</span></h2>
         <h3>Founding</h3>
-        <p>Tatvam Tools was founded in 2014 by <strong>Alkesh Dashadia</strong> with a vision to become a premier distributor of industrial tools and components. Alkesh, with his extensive experience in the industrial sector, aimed to address the growing demand for high-quality products in the market.</p>
+        <p>Tatvam Tools was founded in 2014 with a vision to become a premier distributor of industrial tools and components. With extensive experience in the industrial sector, we aim to address the growing demand for high-quality products in the market.</p>
         <div class="history-stats">
             <div><span>2014</span> Year Founded</div>
             <div><span>10+</span> Years Experience</div>
