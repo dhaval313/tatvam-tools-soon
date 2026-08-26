@@ -801,22 +801,21 @@ section {
   gap: 2rem;
 }
 .application-item {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
   align-items: center;
-  gap: 1rem;
-  padding: 2rem;
+  justify-content: center;
+  padding: 0.75rem 1.75rem;
   background: white;
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
-  min-width: 180px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
   transition: all var(--transition-normal);
-  border: 2px solid var(--gray-300);
+  border: 1.5px solid var(--gray-300);
 }
 .application-item:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
   border-color: var(--secondary);
+  background: var(--primary-light);
 }
 .application-icon {
   width: 70px;
@@ -2534,8 +2533,7 @@ html {
     gap: 1rem;
   }
   .application-item {
-    min-width: 140px;
-    padding: 1.5rem;
+    padding: 0.6rem 1.25rem;
   }
   
   /* Contact Page Responsive Fixes */
