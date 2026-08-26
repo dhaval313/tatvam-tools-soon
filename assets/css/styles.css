@@ -428,6 +428,7 @@ section {
   font-size: 1.1rem;
   color: var(--gray-600);
   line-height: 1.8;
+  text-align: center;
 }
 
 /* Features */
