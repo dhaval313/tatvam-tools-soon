@@ -1322,6 +1322,12 @@
                     if (size === '1/2') {
                         filteredLengths = lengths.filter(l => l !== '12 (6x6x6)');
                     }
+                } else if (currentActiveProduct.id === 'coolant-pipe-with-valve') {
+                    if (size === '1/2') {
+                        filteredLengths = lengths.filter(l => l !== '6');
+                    } else if (size === '1/4' || size === '3/8') {
+                        filteredLengths = lengths.filter(l => l !== '24');
+                    }
                 }
 
                 let lengthOptionsHtml = `
