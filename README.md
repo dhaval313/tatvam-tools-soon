@@ -1,97 +1,34 @@
-# Tatvam Tools Website
+# Tatvam Tools
 
-A professional, modern website for Tatvam Tools - manufacturers of premium quality flexible coolant pipes for industrial applications.
+A responsive commercial website and digital product catalog for an industrial manufacturing company specializing in flexible metal coolant pipes and magnetic bases.
 
-## 🌐 Live Demo
-Open `index.html` in your browser or use a local server.
+## Features
+- Multi-page corporate website including Home, Products Catalog, About Us, and Contact pages
+- Comprehensive industrial product catalog with categorized galleries, technical specifications, and application details
+- Component-based architecture with reusable navigation header and footer modules
+- Interactive client inquiry contact form with client-side form validation
+- Fully responsive design optimized across mobile, tablet, and desktop viewports
 
-## 📁 Project Structure
+## Tech Stack
+- HTML5 (Semantic elements, meta tags)
+- CSS3 (CSS Grid, Flexbox, custom CSS variables)
+- Vanilla JavaScript (ES6+, dynamic component loading, mobile menu toggles)
+- Google Fonts (Inter & Outfit)
 
-```
-Tatvam Tools/
-├── assets/
-│   ├── css/
-│   │   └── styles.css          # Main stylesheet
-│   ├── js/
-│   │   └── script.js           # Main JavaScript file
-│   └── images/
-│       ├── logos/              # Brand logos
-│       └── products/           # Product images
-│           ├── metal-coolant-pipe/
-│           └── magnet/
-├── components/
-│   ├── navbar.html             # Reusable navigation component
-│   └── footer.html             # Reusable footer component
-├── index.html                  # Homepage
-├── products.html               # Products showcase page
-├── about.html                  # About us page
-├── contact.html                # Contact page with form
-└── README.md                   # This file
-```
+## How to Run
+1. Open `index.html` directly in any web browser:
+   - Double-click `index.html`, or
+   - Right-click and choose your browser of choice.
+2. For the best experience (loading modular components cleanly without browser CORS restrictions on `file://`), serve with a local web server:
+   - Using Python:
+     ```bash
+     python -m http.server 8000
+     ```
+   - Using Node:
+     ```bash
+     npx serve .
+     ```
+3. Navigate to `http://localhost:8000`.
 
-## 🛠️ Technologies Used
-
-- **HTML5** - Semantic markup
-- **CSS3** - Modern styling with CSS Grid, Flexbox, and custom properties
-- **JavaScript (ES6+)** - Interactive features and animations
-- **Google Fonts** - Inter & Outfit font families
-
-## ✨ Features
-
-- 📱 **Fully Responsive** - Works on all devices
-- 🎨 **Modern Design** - Premium, professional look with animations
-- 🔧 **Component-Based** - Reusable navbar and footer
-- 🚀 **Performance Optimized** - Efficient CSS and lazy-loaded animations
-- ♿ **Accessible** - Semantic HTML and ARIA labels
-- 🔍 **SEO Ready** - Meta tags and semantic structure
-
-## 🚀 Getting Started
-
-### Option 1: Open Directly
-Simply double-click `index.html` to open in your browser.
-
-### Option 2: Live Server (Recommended)
-1. Install the **Live Server** extension in VS Code
-2. Right-click on `index.html` → "Open with Live Server"
-
-### Option 3: Python Server
-```bash
-python -m http.server 8000
-```
-Then open `http://localhost:8000`
-
-## 📧 Contact Form
-
-The contact form currently displays a success message upon submission. Form data is logged to the browser console for testing purposes.
-
-## 🎨 Customization
-
-### Colors
-Edit CSS custom properties in `assets/css/styles.css`:
-```css
-:root {
-    --primary: #1a1a2e;
-    --secondary: #00a759;
-    --accent: #00c96b;
-}
-```
-
-### Images
-Replace images in `assets/images/` with your own:
-- `logos/` - Brand logos
-- `products/` - Product photographs
-
-## 📄 Pages
-
-1. **Home** (`index.html`) - Hero section, features, applications, CTA
-2. **Products** (`products.html`) - Product catalog with galleries
-3. **About** (`about.html`) - Company overview, vision, mission, values
-4. **Contact** (`contact.html`) - Contact form and information
-
-## 🤝 Credits
-
-Developed for **Tatvam Tools** - Rajkot, Gujarat, India
-
----
-
-© 2026 Tatvam Tools. All rights reserved.
+## Status
+Complete
